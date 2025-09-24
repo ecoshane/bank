@@ -16,19 +16,49 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* 定義深綠色系變數 */
+
+        /* 根據您提供的結構，定義深綠色系變數 */
         :root {
-            --primary-green: #14532d;
-            --secondary-green: #166534;
-            --dark-green-bg: #0A2B0A;
+            --primary-green: #08290e;
+            --secondary-green: #14532d;
+            --deep-green: #061a0b; /* 新增更深的深綠色 */
+            --background-light: #f8f9fa;
+            --background-dark: #102B13;
+            --card-gradient-start: #4b855a;
+            --card-gradient-end: #102B13;
         }
 
-        /* 移除 placehold.co 的文字浮水印並使用深綠色背景 */
+        /* 預設區塊背景 (淺色) */
+        .section {
+            background-color: var(--background-light);
+        }
+        
+        /* 深色區塊背景 - 適用於成功案例、頁腳等區塊 */
+        #portfolio,
+        .footer {
+            background: var(--background-dark);
+        }
+
+        /* 首頁橫幅的漸層背景 */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1920x800/15803d/15803d');
+            background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
             background-size: cover;
             background-position: center;
         }
+
+        /* 聯絡我們區塊的單色深綠背景 */
+        .contact {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* 服務項目和成功案例卡片的漸層背景 */
+        .service-card,
+        .portfolio-card {
+            background: linear-gradient(135deg, var(--card-gradient-start) 0%, var(--card-gradient-end) 100%);
+            color: white;
+        }
+        
         /* 統一顏色為深綠色系 */
         .text-green-500 { color: var(--primary-green); }
         .hover\:text-green-500:hover { color: var(--secondary-green); }
@@ -43,9 +73,24 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+            background: linear-gradient(90deg, var(--secondary-green), var(--primary-green));
             margin: 1rem auto 2rem;
             border-radius: 2px;
+        }
+
+        /* 核心價值卡片的獨特樣式 */
+        .core-value-card {
+            border-bottom: 4px solid var(--secondary-green);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .core-value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 聯絡我們區塊的裝飾線顏色 */
+        .bg-contact-line {
+            background-color: var(--deep-green);
         }
     </style>
 </head>
@@ -55,7 +100,7 @@
     <nav class="bg-white shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#hero" class="flex items-center space-x-2">
-                <i class="fas fa-leaf text-green-700 text-3xl" style="color: var(--primary-green);"></i>
+                <i class="fas fa-leaf text-3xl" style="color: var(--primary-green);"></i>
                 <span class="text-3xl font-bold text-gray-800">Ecoshane Bank</span>
             </a>
             <div class="space-x-4 hidden md:flex">
@@ -84,7 +129,7 @@
         <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
             Ecoshane Bank
         </h1>
-        <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8">
+        <p class="text-base md:text-lg max-w-full mx-auto mb-8 whitespace-nowrap">
             我們以金融科技加速永續轉型，為您提供專屬的綠色金融解決方案。
         </p>
         <div class="space-x-4">
@@ -93,7 +138,7 @@
     </header>
 
     <!-- About Section - Main Intro -->
-    <section id="about" class="bg-white py-20">
+    <section id="about" class="section py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center">
                 <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">
@@ -107,7 +152,7 @@
     </section>
 
     <!-- About Section - Core Values -->
-    <section id="core-values" class="bg-gray-100 py-20">
+    <section id="core-values" class="section bg-gray-100 py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center">
@@ -115,9 +160,9 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- 核心價值 1: 信任與透明 -->
-                    <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
+                    <div class="core-value-card bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-handshake text-green-700 text-3xl mr-4" style="color: var(--primary-green);"></i>
+                            <i class="fas fa-handshake text-3xl mr-4" style="color: var(--secondary-green);"></i>
                             <h4 class="font-semibold text-gray-800 text-xl">信任與透明</h4>
                         </div>
                         <p class="text-gray-600">
@@ -125,9 +170,9 @@
                         </p>
                     </div>
                     <!-- 核心價值 2: 永續與創新 -->
-                    <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
+                    <div class="core-value-card bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-seedling text-green-700 text-3xl mr-4" style="color: var(--primary-green);"></i>
+                            <i class="fas fa-seedling text-3xl mr-4" style="color: var(--secondary-green);"></i>
                             <h4 class="font-semibold text-gray-800 text-xl">永續與創新</h4>
                         </div>
                         <p class="text-gray-600">
@@ -135,9 +180,9 @@
                         </p>
                     </div>
                     <!-- 核心價值 3: 社群與影響力 -->
-                    <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
+                    <div class="core-value-card bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-heart text-green-700 text-3xl mr-4" style="color: var(--primary-green);"></i>
+                            <i class="fas fa-heart text-3xl mr-4" style="color: var(--secondary-green);"></i>
                             <h4 class="font-semibold text-gray-800 text-xl">社群與影響力</h4>
                         </div>
                         <p class="text-gray-600">
@@ -150,7 +195,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="bg-gray-50 py-20">
+    <section id="services" class="section bg-gray-50 py-20">
         <div class="container mx-auto px-4">
             <div class="text-center">
                 <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">
@@ -159,26 +204,26 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Service 1: 智慧碳排評估 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <i class="fas fa-chart-line text-green-700 text-5xl mb-4" style="color: var(--primary-green);"></i>
-                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">範疇一與範疇二碳排評估</h3>
-                    <p class="text-gray-600">
+                <div class="service-card rounded-xl shadow-lg p-8 transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                    <i class="fas fa-chart-line text-5xl mb-4 text-white"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-white">範疇一與範疇二碳排評估</h3>
+                    <p class="text-base text-gray-200">
                         精準計算企業的直接排放（範疇一）與間接排放（範疇二），為淨零轉型提供科學依據。
                     </p>
                 </div>
                 <!-- Service 2: 開放式綠色貸款媒合 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <i class="fas fa-bank text-green-700 text-5xl mb-4" style="color: var(--primary-green);"></i>
-                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">開放式綠色貸款媒合</h3>
-                    <p class="text-gray-600">
+                <div class="service-card rounded-xl shadow-lg p-8 transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                    <i class="fas fa-bank text-5xl mb-4 text-white"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-white">開放式綠色貸款媒合</h3>
+                    <p class="text-base text-gray-200">
                         透過開放銀行技術，我們為您無縫媒合各種綠色金融產品，如低碳利率貸款或永續專案融資。
                     </p>
                 </div>
                 <!-- Service 3: AI 永續發展建議 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <i class="fas fa-robot text-green-700 text-5xl mb-4" style="color: var(--primary-green);"></i>
-                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">AI 永續發展建議</h3>
-                    <p class="text-gray-600">
+                <div class="service-card rounded-xl shadow-lg p-8 transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                    <i class="fas fa-robot text-5xl mb-4 text-white"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-white">AI 永續發展建議</h3>
+                    <p class="text-base text-gray-200">
                         內建 AI Agent 會根據您的減碳成效，提供客製化的金融建議，助您實現環境與財務的雙贏目標。
                     </p>
                 </div>
@@ -187,15 +232,17 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-white py-20">
+    <section id="contact" class="contact py-20 text-white">
         <div class="container mx-auto px-4">
             <div class="max-w-xl mx-auto text-center">
-                <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">聯絡我們</h2>
+                <h2 class="text-4xl font-bold mb-2">聯絡我們</h2>
+                <!-- 使用新的 CSS class 來改變線條顏色 -->
+                <div class="w-20 h-1 mx-auto bg-contact-line my-4"></div>
             </div>
-            <div class="max-w-xl mx-auto text-center text-gray-600 space-y-4">
+            <div class="max-w-xl mx-auto text-center space-y-4">
                 <p>如果您對我們的綠色金融解決方案有任何疑問，歡迎隨時與我們聯繫。</p>
                 <!-- 修改電子郵件地址 -->
-                <p>電子郵件：<a href="mailto:ecoshane.esg@gmail.com" class="text-green-700 hover:underline" style="color: var(--primary-green);">ecoshane.esg@gmail.com</a></p>
+                <p>電子郵件：<a href="mailto:ecoshane.esg@gmail.com" class="hover:underline text-gray-300 hover:text-white transition duration-300">ecoshane.esg@gmail.com</a></p>
                 <p>電話：+886-2-1234-5678</p>
                 <p>地址：台灣台北市信義區永續路101號</p>
             </div>
@@ -203,7 +250,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-gray-400 py-8" style="background-color: var(--dark-green-bg);">
+    <footer class="footer text-gray-400 py-8">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2025 Ecoshane Bank. All Rights Reserved.</p>
         </div>
