@@ -15,8 +15,14 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdf4;
         }
+        /* 定義深綠色系變數 */
+        :root {
+            --primary-green: #14532d;
+            --secondary-green: #166534;
+            --dark-green-bg: #0A2B0A;
+        }
+
         /* 移除 placehold.co 的文字浮水印並使用深綠色背景 */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1920x800/15803d/15803d');
@@ -24,26 +30,39 @@
             background-position: center;
         }
         /* 統一顏色為深綠色系 */
-        .text-green-500 { color: #166534; }
-        .hover\:text-green-500:hover { color: #15803d; }
-        .bg-green-500 { background-color: #166534; }
-        .hover\:bg-green-600:hover { background-color: #15803d; }
-        .bg-green-600 { background-color: #166534; }
-        .bg-green-700 { background-color: #14532d; }
+        .text-green-500 { color: var(--primary-green); }
+        .hover\:text-green-500:hover { color: var(--secondary-green); }
+        .bg-green-500 { background-color: var(--primary-green); }
+        .hover\:bg-green-600:hover { background-color: var(--secondary-green); }
+        .bg-green-600 { background-color: var(--primary-green); }
+        .bg-green-700 { background-color: var(--primary-green); }
+
+        /* Custom section title style with a gradient underline */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+            margin: 1rem auto 2rem;
+            border-radius: 2px;
+        }
     </style>
 </head>
-<body class="text-gray-900">
+<body class="bg-gray-50 text-gray-900">
 
     <!-- Navbar -->
     <nav class="bg-white shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-2">
-                <i class="fas fa-leaf text-green-700 text-3xl"></i>
-                <span class="text-2xl font-bold text-gray-800">Ecoshane Bank</span>
+            <a href="#hero" class="flex items-center space-x-2">
+                <i class="fas fa-leaf text-green-700 text-3xl" style="color: var(--primary-green);"></i>
+                <span class="text-3xl font-bold text-gray-800">Ecoshane Bank</span>
             </a>
             <div class="space-x-4 hidden md:flex">
+                <a href="#hero" class="text-gray-600 hover:text-green-700 transition duration-300">首頁</a>
                 <a href="#about" class="text-gray-600 hover:text-green-700 transition duration-300">關於我們</a>
-                <a href="#services" class="text-gray-600 hover:text-green-700 transition duration-300">我們的服務</a>
+                <a href="#core-values" class="text-gray-600 hover:text-green-700 transition duration-300">核心價值</a>
+                <a href="#services" class="text-gray-600 hover:text-green-700 transition duration-300">服務項目</a>
                 <a href="#contact" class="text-gray-600 hover:text-green-700 transition duration-300">聯絡我們</a>
             </div>
             <button id="menu-btn" class="text-gray-600 md:hidden focus:outline-none">
@@ -52,18 +71,20 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner pb-2">
+            <a href="#hero" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">首頁</a>
             <a href="#about" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">關於我們</a>
-            <a href="#services" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">我們的服務</a>
+            <a href="#core-values" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">核心價值</a>
+            <a href="#services" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">服務項目</a>
             <a href="#contact" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">聯絡我們</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero text-white text-center py-40 mt-16">
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+    <header id="hero" class="hero text-white text-center py-40 mt-16">
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
             Ecoshane Bank
         </h1>
-        <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">
+        <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8">
             我們以金融科技加速永續轉型，為您提供專屬的綠色金融解決方案。
         </p>
         <div class="space-x-4">
@@ -71,46 +92,58 @@
         </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="container mx-auto px-4 py-20">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">
-                關於 Ecoshane Bank
-            </h2>
-            <p class="text-gray-600 leading-relaxed font-medium mb-8">
-                Ecoshane Bank 致力於推動綠色金融革命，我們的使命是透過創新金融科技，加速企業的永續轉型。我們相信，金融的力量可以成為實現環境永續的重要驅動力。
-            </p>
-            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">我們的核心價值</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- 核心價值 1: 信任與透明 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-handshake text-green-700 text-2xl mr-4"></i>
-                        <h4 class="font-semibold text-gray-800 text-xl">信任與透明</h4>
-                    </div>
-                    <p class="text-gray-600">
-                        我們提供公開、透明的金融服務，確保每一筆資金都流向對環境友善的項目，為客戶建立堅實的信任基礎。
-                    </p>
+    <!-- About Section - Main Intro -->
+    <section id="about" class="bg-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">
+                    關於我們
+                </h2>
+                <p class="text-xl leading-loose text-gray-600 font-medium mt-4">
+                    Ecoshane Bank 致力於推動綠色金融革命，我們的使命是透過創新金融科技，加速企業的永續轉型。我們相信，金融的力量可以成為實現環境永續的重要驅動力。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - Core Values -->
+    <section id="core-values" class="bg-gray-100 py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center">
+                    <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">核心價值</h2>
                 </div>
-                <!-- 核心價值 2: 永續與創新 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-seedling text-green-700 text-2xl mr-4"></i>
-                        <h4 class="font-semibold text-gray-800 text-xl">永續與創新</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 核心價值 1: 信任與透明 -->
+                    <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-handshake text-green-700 text-3xl mr-4" style="color: var(--primary-green);"></i>
+                            <h4 class="font-semibold text-gray-800 text-xl">信任與透明</h4>
+                        </div>
+                        <p class="text-gray-600">
+                            我們提供公開、透明的金融服務，確保每一筆資金都流向對環境友善的項目，為客戶建立堅實的信任基礎。
+                        </p>
                     </div>
-                    <p class="text-gray-600">
-                        我們結合永續發展理念與先進金融科技，為您創造環境與財務的雙贏，持續尋找更綠色、更有效率的解決方案。
-                    </p>
-                </div>
-                <!-- 核心價值 3: 社群與影響力 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-heart text-green-700 text-2xl mr-4"></i>
-                        <h4 class="font-semibold text-gray-800 text-xl">社群與影響力</h4>
+                    <!-- 核心價值 2: 永續與創新 -->
+                    <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-seedling text-green-700 text-3xl mr-4" style="color: var(--primary-green);"></i>
+                            <h4 class="font-semibold text-gray-800 text-xl">永續與創新</h4>
+                        </div>
+                        <p class="text-gray-600">
+                            我們結合永續發展理念與先進金融科技，為您創造環境與財務的雙贏，持續尋找更綠色、更有效率的解決方案。
+                        </p>
                     </div>
-                    <p class="text-gray-600">
-                        透過我們的平台，共同建立一個對地球更負責任的金融生態圈，鼓勵更多人參與永續行動，創造深遠的正面影響。
-                    </p>
+                    <!-- 核心價值 3: 社群與影響力 -->
+                    <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-heart text-green-700 text-3xl mr-4" style="color: var(--primary-green);"></i>
+                            <h4 class="font-semibold text-gray-800 text-xl">社群與影響力</h4>
+                        </div>
+                        <p class="text-gray-600">
+                            透過我們的平台，共同建立一個對地球更負責任的金融生態圈，鼓勵更多人參與永續行動，創造深遠的正面影響。
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,31 +152,32 @@
     <!-- Services Section -->
     <section id="services" class="bg-gray-50 py-20">
         <div class="container mx-auto px-4">
-            <!-- 修改標題文字 -->
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
-                透過綠色金融科技，賦能您的永續轉型之路
-            </h2>
+            <div class="text-center">
+                <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">
+                    服務項目
+                </h2>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Service 1: 智慧碳排評估 -->
                 <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <i class="fas fa-chart-line text-green-700 text-5xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800">範疇一與範疇二碳排評估</h3>
+                    <i class="fas fa-chart-line text-green-700 text-5xl mb-4" style="color: var(--primary-green);"></i>
+                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">範疇一與範疇二碳排評估</h3>
                     <p class="text-gray-600">
                         精準計算企業的直接排放（範疇一）與間接排放（範疇二），為淨零轉型提供科學依據。
                     </p>
                 </div>
                 <!-- Service 2: 開放式綠色貸款媒合 -->
                 <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <i class="fas fa-bank text-green-700 text-5xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800">開放式綠色貸款媒合</h3>
+                    <i class="fas fa-bank text-green-700 text-5xl mb-4" style="color: var(--primary-green);"></i>
+                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">開放式綠色貸款媒合</h3>
                     <p class="text-gray-600">
                         透過開放銀行技術，我們為您無縫媒合各種綠色金融產品，如低碳利率貸款或永續專案融資。
                     </p>
                 </div>
                 <!-- Service 3: AI 永續發展建議 -->
                 <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <i class="fas fa-robot text-green-700 text-5xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800">AI 永續發展建議</h3>
+                    <i class="fas fa-robot text-green-700 text-5xl mb-4" style="color: var(--primary-green);"></i>
+                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">AI 永續發展建議</h3>
                     <p class="text-gray-600">
                         內建 AI Agent 會根據您的減碳成效，提供客製化的金融建議，助您實現環境與財務的雙贏目標。
                     </p>
@@ -153,19 +187,23 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="container mx-auto px-4 py-20">
-        <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">聯絡我們</h2>
-        <div class="max-w-xl mx-auto text-center text-gray-600 space-y-4">
-            <p>如果您對我們的綠色金融解決方案有任何疑問，歡迎隨時與我們聯繫。</p>
-            <!-- 修改電子郵件地址 -->
-            <p>電子郵件：<a href="mailto:ecoshane.esg@gmail.com" class="text-green-700 hover:underline">ecoshane.esg@gmail.com</a></p>
-            <p>電話：+886-2-1234-5678</p>
-            <p>地址：台灣台北市信義區永續路101號</p>
+    <section id="contact" class="bg-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-xl mx-auto text-center">
+                <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">聯絡我們</h2>
+            </div>
+            <div class="max-w-xl mx-auto text-center text-gray-600 space-y-4">
+                <p>如果您對我們的綠色金融解決方案有任何疑問，歡迎隨時與我們聯繫。</p>
+                <!-- 修改電子郵件地址 -->
+                <p>電子郵件：<a href="mailto:ecoshane.esg@gmail.com" class="text-green-700 hover:underline" style="color: var(--primary-green);">ecoshane.esg@gmail.com</a></p>
+                <p>電話：+886-2-1234-5678</p>
+                <p>地址：台灣台北市信義區永續路101號</p>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 py-8">
+    <footer class="text-gray-400 py-8" style="background-color: var(--dark-green-bg);">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2025 Ecoshane Bank. All Rights Reserved.</p>
         </div>
@@ -174,14 +212,14 @@
     <!-- Chatbot Section -->
     <div id="chatbot-container" class="fixed bottom-6 right-6 z-50">
         <!-- Chatbot toggle button -->
-        <button id="chat-toggle" class="w-16 h-16 bg-green-700 text-white rounded-full shadow-lg flex items-center justify-center cursor-pointer transform transition-transform hover:scale-110 focus:outline-none">
+        <button id="chat-toggle" class="w-16 h-16 text-white rounded-full shadow-lg flex items-center justify-center cursor-pointer transform transition-transform hover:scale-110 focus:outline-none" style="background-color: var(--primary-green);">
             <i class="fas fa-robot text-3xl"></i>
         </button>
 
         <!-- Chat window -->
         <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 h-96 bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden">
             <!-- Chat header -->
-            <div class="bg-green-700 text-white p-4 flex justify-between items-center rounded-t-xl">
+            <div class="text-white p-4 flex justify-between items-center rounded-t-xl" style="background-color: var(--primary-green);">
                 <h3 class="text-lg font-bold">智慧客服</h3>
                 <button id="chat-close" class="text-white hover:text-gray-200 focus:outline-none">
                     <i class="fas fa-times"></i>
@@ -198,8 +236,8 @@
             </div>
             <!-- Chat input area -->
             <div class="p-4 border-t border-gray-200 flex items-center">
-                <input id="chat-input" type="text" placeholder="輸入您的訊息..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
-                <button id="chat-send" class="ml-2 bg-green-700 text-white rounded-full w-10 h-10 flex items-center justify-center transform transition-transform hover:scale-110 focus:outline-none">
+                <input id="chat-input" type="text" placeholder="輸入您的訊息..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2" style="border-color: var(--secondary-green); focus:ring-color: var(--secondary-green);">
+                <button id="chat-send" class="ml-2 text-white rounded-full w-10 h-10 flex items-center justify-center transform transition-transform hover:scale-110 focus:outline-none" style="background-color: var(--primary-green);">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
@@ -303,7 +341,7 @@
             
             if (sender === 'user') {
                 messageDiv.classList.add('justify-end');
-                messageDiv.innerHTML = `<div class="bg-green-500 text-white rounded-lg p-3 max-w-[80%]">${text}</div>`;
+                messageDiv.innerHTML = `<div class="bg-green-500 text-white rounded-lg p-3 max-w-[80%]" style="background-color: var(--secondary-green);">${text}</div>`;
             } else if (sender === 'bot') {
                 messageDiv.classList.add('justify-start');
                 messageDiv.innerHTML = `<div class="bg-gray-200 text-gray-800 rounded-lg p-3 max-w-[80%]">${text}</div>`;
