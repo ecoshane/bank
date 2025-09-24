@@ -178,9 +178,44 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-gray-400 py-8">
         <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 Ecoshane Bank. All Rights Reserved.</p>
+            <p>&copy; 2025 Ecoshane Bank. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Chatbot Section -->
+    <div id="chatbot-container" class="fixed bottom-6 right-6 z-50">
+        <!-- Chatbot toggle button -->
+        <button id="chat-toggle" class="w-16 h-16 bg-green-700 text-white rounded-full shadow-lg flex items-center justify-center cursor-pointer transform transition-transform hover:scale-110 focus:outline-none">
+            <i class="fas fa-robot text-3xl"></i>
+        </button>
+
+        <!-- Chat window -->
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 h-96 bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden">
+            <!-- Chat header -->
+            <div class="bg-green-700 text-white p-4 flex justify-between items-center rounded-t-xl">
+                <h3 class="text-lg font-bold">智慧客服</h3>
+                <button id="chat-close" class="text-white hover:text-gray-200 focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <!-- Chat messages area -->
+            <div id="chat-messages" class="flex-1 p-4 space-y-4 overflow-y-auto">
+                <!-- Welcome message from bot -->
+                <div class="flex justify-start">
+                    <div class="bg-gray-200 text-gray-800 rounded-lg p-3 max-w-[80%]">
+                        <p>您好！我是 Ecoshane Bank 的智慧客服，很高興為您服務。請問有什麼可以協助您的嗎？</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Chat input area -->
+            <div class="p-4 border-t border-gray-200 flex items-center">
+                <input id="chat-input" type="text" placeholder="輸入您的訊息..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                <button id="chat-send" class="ml-2 bg-green-700 text-white rounded-full w-10 h-10 flex items-center justify-center transform transition-transform hover:scale-110 focus:outline-none">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Smooth scrolling for navigation links
@@ -203,6 +238,95 @@
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        // Chatbot functionality
+        const chatToggleBtn = document.getElementById('chat-toggle');
+        const chatCloseBtn = document.getElementById('chat-close');
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSendBtn = document.getElementById('chat-send');
+
+        chatToggleBtn.addEventListener('click', () => {
+            chatWindow.classList.toggle('hidden');
+        });
+
+        chatCloseBtn.addEventListener('click', () => {
+            chatWindow.classList.add('hidden');
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        chatSendBtn.addEventListener('click', sendMessage);
+
+        async function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (userMessage === '') return;
+
+            // Display user message
+            addMessage(userMessage, 'user');
+            chatInput.value = '';
+            
+            // Display typing indicator
+            const typingIndicator = addMessage('...', 'bot-typing');
+            
+            try {
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                
+                const payload = {
+                    contents: [{
+                        parts: [{
+                            text: userMessage
+                        }]
+                    }],
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const botResponse = result.candidates?.[0]?.content?.parts?.[0]?.text || "抱歉，目前無法回答您的問題。";
+                
+                // Remove typing indicator and display bot response
+                chatMessages.removeChild(typingIndicator);
+                addMessage(botResponse, 'bot');
+
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                chatMessages.removeChild(typingIndicator);
+                addMessage("抱歉，連線失敗，請稍後再試。", 'bot');
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('flex');
+            
+            if (sender === 'user') {
+                messageDiv.classList.add('justify-end');
+                messageDiv.innerHTML = `<div class="bg-green-500 text-white rounded-lg p-3 max-w-[80%]">${text}</div>`;
+            } else if (sender === 'bot') {
+                messageDiv.classList.add('justify-start');
+                messageDiv.innerHTML = `<div class="bg-gray-200 text-gray-800 rounded-lg p-3 max-w-[80%]">${text}</div>`;
+            } else if (sender === 'bot-typing') {
+                messageDiv.classList.add('justify-start');
+                messageDiv.innerHTML = `<div class="bg-gray-200 text-gray-800 rounded-lg p-3 max-w-[80%] animate-pulse">...</div>`;
+            }
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+            return messageDiv;
+        }
     </script>
 </body>
 </html>
