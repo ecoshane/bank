@@ -17,18 +17,19 @@
             font-family: 'Inter', sans-serif;
             background-color: #f0fdf4;
         }
-        /* 移除 placehold.co 的文字浮水印 */
+        /* 移除 placehold.co 的文字浮水印並使用深綠色背景 */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1920x800/166534/166534');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1920x800/15803d/15803d');
             background-size: cover;
             background-position: center;
         }
-        /* Overriding green-500 for a darker shade */
-        .text-green-500 { color: #15803d; }
+        /* 統一顏色為深綠色系 */
+        .text-green-500 { color: #166534; }
         .hover\:text-green-500:hover { color: #15803d; }
-        .bg-green-500 { background-color: #15803d; }
-        .hover\:bg-green-600:hover { background-color: #166534; }
+        .bg-green-500 { background-color: #166534; }
+        .hover\:bg-green-600:hover { background-color: #15803d; }
         .bg-green-600 { background-color: #166534; }
+        .bg-green-700 { background-color: #14532d; }
     </style>
 </head>
 <body class="text-gray-900">
@@ -37,13 +38,13 @@
     <nav class="bg-white shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <i class="fas fa-leaf text-green-500 text-3xl"></i>
+                <i class="fas fa-leaf text-green-700 text-3xl"></i>
                 <span class="text-2xl font-bold text-gray-800">Ecoshane Bank</span>
             </a>
             <div class="space-x-4 hidden md:flex">
-                <a href="#about" class="text-gray-600 hover:text-green-500 transition duration-300">關於我們</a>
-                <a href="#services" class="text-gray-600 hover:text-green-500 transition duration-300">我們的服務</a>
-                <a href="#contact" class="text-gray-600 hover:text-green-500 transition duration-300">聯絡我們</a>
+                <a href="#about" class="text-gray-600 hover:text-green-700 transition duration-300">關於我們</a>
+                <a href="#services" class="text-gray-600 hover:text-green-700 transition duration-300">我們的服務</a>
+                <a href="#contact" class="text-gray-600 hover:text-green-700 transition duration-300">聯絡我們</a>
             </div>
             <button id="menu-btn" class="text-gray-600 md:hidden focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
@@ -66,7 +67,7 @@
             我們以金融科技加速永續轉型，為您提供專屬的綠色金融解決方案。
         </p>
         <div class="space-x-4">
-            <a href="#services" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300">
+            <a href="#services" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300">
                 探索我們的服務
             </a>
         </div>
@@ -85,14 +86,14 @@
                 <div class="space-y-4 text-gray-600 leading-relaxed">
                     <p>我們的綠色金融核心優勢在於：</p>
                     <ul class="list-disc list-inside space-y-2">
-                        <li>**智慧碳排評估：** 簡化繁瑣的碳排放計算，提供即時、可視化的數據。</li>
+                        <li>**智慧碳排評估：** 涵蓋**範疇一與範疇二**，提供即時、可視化的精準碳排數據。</li>
                         <li>**開放式綠色貸款媒合：** 透過金融數據分析，主動推薦最適合的永續貸款方案。</li>
                         <li>**AI 永續發展建議：** 運用 AI Agent 分析減碳成效，提供客製化的綠色金融策略。</li>
                     </ul>
                 </div>
             </div>
             <div>
-                <img src="https://placehold.co/600x400/22c55e/ffffff?text=Ecoshane+Mission" alt="Ecoshane Mission" class="rounded-xl shadow-lg w-full h-auto">
+                <img src="https://placehold.co/600x400/166534/166534" alt="Ecoshane Mission" class="rounded-xl shadow-lg w-full h-auto">
             </div>
         </div>
     </section>
@@ -101,22 +102,22 @@
     <section id="services" class="bg-gray-50 py-20">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
-                Ecoshane 綠色金融三大核心
+                我們的服務
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                 <!-- Service 1: 智慧碳排評估 -->
                 <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <i class="fas fa-chart-line text-green-500 text-5xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800">智慧碳排評估</h3>
+                    <i class="fas fa-chart-line text-green-700 text-5xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">範疇一與範疇二碳排評估</h3>
                     <p class="text-gray-600">
-                        利用台灣電力排放係數與即時數據，精準計算您的碳排放量。這是您踏入綠色金融世界的第一步。
+                        精準計算企業的直接排放（範疇一）與間接排放（範疇二），為淨零轉型提供科學依據。
                     </p>
                 </div>
 
                 <!-- Service 2: 開放式綠色貸款媒合 -->
                 <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <i class="fas fa-bank text-green-500 text-5xl mb-4"></i>
+                    <i class="fas fa-bank text-green-700 text-5xl mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2 text-gray-800">開放式綠色貸款媒合</h3>
                     <p class="text-gray-600">
                         透過開放銀行技術，我們為您無縫媒合各種綠色金融產品，如低碳利率貸款或永續專案融資。
@@ -125,7 +126,7 @@
 
                 <!-- Service 3: AI 永續發展建議 -->
                 <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
-                    <i class="fas fa-robot text-green-500 text-5xl mb-4"></i>
+                    <i class="fas fa-robot text-green-700 text-5xl mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2 text-gray-800">AI 永續發展建議</h3>
                     <p class="text-gray-600">
                         內建 AI Agent 會根據您的減碳成效，提供客製化的金融建議，助您實現環境與財務的雙贏目標。
@@ -136,16 +137,27 @@
     </section>
 
     <!-- Call to Action Section -->
-    <section class="bg-green-600 text-white text-center py-20">
+    <section class="bg-green-700 text-white text-center py-20">
         <h2 class="text-3xl font-bold mb-4">
             準備好為地球與您的未來投資了嗎？
         </h2>
         <p class="text-lg max-w-2xl mx-auto mb-8">
             立即聯絡 Ecoshane Bank，讓我們為您的永續旅程提供最堅實的支援。
         </p>
-        <a href="#contact" class="bg-white text-green-600 font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 hover:bg-gray-100">
+        <a href="#contact" class="bg-white text-green-700 font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 hover:bg-gray-100">
             聯絡我們的專家
         </a>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto px-4 py-20">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">聯絡我們</h2>
+        <div class="max-w-xl mx-auto text-center text-gray-600 space-y-4">
+            <p>如果您對我們的綠色金融解決方案有任何疑問，歡迎隨時與我們聯繫。</p>
+            <p>電子郵件：<a href="mailto:info@ecoshanebank.com" class="text-green-700 hover:underline">info@ecoshanebank.com</a></p>
+            <p>電話：+886-2-1234-5678</p>
+            <p>地址：台灣台北市信義區永續路101號</p>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -160,9 +172,13 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
