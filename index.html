@@ -17,11 +17,18 @@
             font-family: 'Inter', sans-serif;
             background-color: #f0fdf4;
         }
+        /* 移除 placehold.co 的文字浮水印 */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x800/22c55e/ffffff?text=Ecoshane+Bank');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1920x800/166534/166534');
             background-size: cover;
             background-position: center;
         }
+        /* Overriding green-500 for a darker shade */
+        .text-green-500 { color: #15803d; }
+        .hover\:text-green-500:hover { color: #15803d; }
+        .bg-green-500 { background-color: #15803d; }
+        .hover\:bg-green-600:hover { background-color: #166534; }
+        .bg-green-600 { background-color: #166534; }
     </style>
 </head>
 <body class="text-gray-900">
