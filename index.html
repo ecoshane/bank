@@ -18,7 +18,7 @@
         :root {
             --primary-green: #08290e;
             --secondary-green: #14532d;
-            --deep-green: #061a0b; /* 新增更深的深綠色 */
+            --deep-green: #061a0b; 
             --background-light: #f8f9fa;
             --background-dark: #102B13;
             --card-gradient-start: #4b855a;
@@ -30,7 +30,7 @@
             background-color: var(--background-light);
         }
 
-        /* 深色區塊背景 - 適用於頁腳等區塊 */
+        /* 深色區塊背景 - 適用於成功案例、頁腳等區塊 */
         #portfolio,
         .footer {
             background: var(--background-dark);
@@ -74,6 +74,11 @@
             margin: 1rem auto 2rem;
             border-radius: 2px;
         }
+        
+        /* 成功案例區塊標題專用樣式 */
+        .portfolio-title::after {
+            background: linear-gradient(90deg, #FFFFFF, var(--secondary-green));
+        }
 
         /* 核心價值卡片的獨特樣式 */
         .core-value-card {
@@ -103,7 +108,7 @@
                 <a href="#about" class="text-gray-600 hover:text-green-700 transition duration-300">關於我們</a>
                 <a href="#core-values" class="text-gray-600 hover:text-green-700 transition duration-300">核心價值</a>
                 <a href="#services" class="text-gray-600 hover:text-green-700 transition duration-300">服務項目</a>
-                <a href="yingying_cement_case_study.html" class="text-gray-600 hover:text-green-700 transition duration-300">成功案例</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-green-700 transition duration-300">成功案例</a>
                 <a href="#contact" class="text-gray-600 hover:text-green-700 transition duration-300">聯絡我們</a>
             </div>
             <button id="menu-btn" class="text-gray-600 md:hidden focus:outline-none">
@@ -115,7 +120,7 @@
             <a href="#about" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">關於我們</a>
             <a href="#core-values" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">核心價值</a>
             <a href="#services" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">服務項目</a>
-            <a href="yingying_cement_case_study.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">成功案例</a>
+            <a href="#portfolio" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">成功案例</a>
             <a href="#contact" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">聯絡我們</a>
         </div>
     </nav>
@@ -211,12 +216,42 @@
                     </p>
                 </div>
             </div>
-            <div class="text-center mt-12">
-                <a href="yingying_cement_case_study.html" class="inline-block bg-secondary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-green-700 transition duration-300">
-                    <i class="fas fa-lightbulb mr-2"></i> 探索我們的最新案例：盈盈水泥集團
-                </a>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20 text-white" style="background-color: var(--background-dark);">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="portfolio-title section-title text-4xl font-bold mb-2">
+                成功案例
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <p class="text-xl font-light mb-10 text-gray-300">
+                    Ecoshane Bank 的金融科技創新，已成功協助高碳排企業實現公正轉型與財務優化。
+                </p>
+
+                <div class="portfolio-card bg-gray-900 rounded-xl shadow-2xl p-8 md:p-12 text-left transition duration-500 hover:scale-[1.02]">
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-3/4">
+                            <span class="text-sm font-semibold text-gray-300 uppercase tracking-widest block mb-2">SLL + SROI 整合</span>
+                            <h3 class="text-3xl font-bold mb-3">盈盈水泥集團：公正轉型的最佳典範</h3>
+                            <p class="text-gray-200 mb-4">
+                                **挑戰：** 傳統水泥業在脫碳過程中，如何將「員工轉崗培訓」的社會價值，轉化為實質的金融收益？
+                            </p>
+                            <p class="text-gray-200 mb-6">
+                                **成果：** 成功實現碳排強度下降 **6.2%**，並經 SROI 模型驗證，社會投入創造 **1:3.4** 淨價值，自動觸發貸款**利率優惠**。
+                            </p>
+                            <a href="yingying_cement_case_study.html" class="inline-block bg-white text-primary font-semibold py-3 px-8 rounded-full shadow-xl hover:bg-gray-200 transition duration-300">
+                                <i class="fas fa-arrow-right mr-2"></i> 深入了解此案例
+                            </a>
+                        </div>
+                        <div class="md:w-1/4 mt-6 md:mt-0 md:pl-8 text-center">
+                            <i class="fas fa-industry text-6xl opacity-70"></i>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            </div>
+        </div>
     </section>
     <section id="contact" class="contact py-20 text-white">
         <div class="container mx-auto px-4">
@@ -310,7 +345,7 @@
 
         chatSendBtn.addEventListener('click', sendMessage);
 
-        // START: 智慧客服模擬 SLL 數據腳本 (已替換原有 sendMessage 函式)
+        // 智慧客服模擬 SLL 數據腳本 (已替換原有 sendMessage 函式)
         async function sendMessage() {
             const userMessage = chatInput.value.trim();
             if (userMessage === '') return;
@@ -352,7 +387,6 @@
             chatMessages.removeChild(typingIndicator);
             addMessage(botResponse, 'bot');
         }
-        // END: 智慧客服模擬 SLL 數據腳本 (已替換原有 sendMessage 函式)
 
 
         function addMessage(text, sender) {
