@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecoshane Bank - 永續綠色金融</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -32,8 +29,8 @@
         .section {
             background-color: var(--background-light);
         }
-        
-        /* 深色區塊背景 - 適用於成功案例、頁腳等區塊 */
+
+        /* 深色區塊背景 - 適用於頁腳等區塊 */
         #portfolio,
         .footer {
             background: var(--background-dark);
@@ -58,7 +55,7 @@
             background: linear-gradient(135deg, var(--card-gradient-start) 0%, var(--card-gradient-end) 100%);
             color: white;
         }
-        
+
         /* 統一顏色為深綠色系 */
         .text-green-500 { color: var(--primary-green); }
         .hover\:text-green-500:hover { color: var(--secondary-green); }
@@ -95,8 +92,6 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
-
-    <!-- Navbar -->
     <nav class="bg-white shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#hero" class="flex items-center space-x-2">
@@ -108,23 +103,22 @@
                 <a href="#about" class="text-gray-600 hover:text-green-700 transition duration-300">關於我們</a>
                 <a href="#core-values" class="text-gray-600 hover:text-green-700 transition duration-300">核心價值</a>
                 <a href="#services" class="text-gray-600 hover:text-green-700 transition duration-300">服務項目</a>
+                <a href="yingying_cement_case_study.html" class="text-gray-600 hover:text-green-700 transition duration-300">成功案例</a>
                 <a href="#contact" class="text-gray-600 hover:text-green-700 transition duration-300">聯絡我們</a>
             </div>
             <button id="menu-btn" class="text-gray-600 md:hidden focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner pb-2">
             <a href="#hero" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">首頁</a>
             <a href="#about" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">關於我們</a>
             <a href="#core-values" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">核心價值</a>
             <a href="#services" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">服務項目</a>
+            <a href="yingying_cement_case_study.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">成功案例</a>
             <a href="#contact" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">聯絡我們</a>
         </div>
     </nav>
-
-    <!-- Hero Section -->
     <header id="hero" class="hero text-white text-center py-40 mt-16">
         <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
             Ecoshane Bank
@@ -133,11 +127,8 @@
             我們以金融科技加速永續轉型，為您提供專屬的綠色金融解決方案。
         </p>
         <div class="space-x-4">
-            <!-- 刪除「探索我們的服務」按鈕 -->
-        </div>
+            </div>
     </header>
-
-    <!-- About Section - Main Intro -->
     <section id="about" class="section py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center">
@@ -150,8 +141,6 @@
             </div>
         </div>
     </section>
-
-    <!-- About Section - Core Values -->
     <section id="core-values" class="section bg-gray-100 py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-5xl mx-auto">
@@ -159,7 +148,6 @@
                     <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">核心價值</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- 核心價值 1: 信任與透明 -->
                     <div class="core-value-card bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-handshake text-3xl mr-4" style="color: var(--secondary-green);"></i>
@@ -169,7 +157,6 @@
                             我們提供公開、透明的金融服務，確保每一筆資金都流向對環境友善的項目，為客戶建立堅實的信任基礎。
                         </p>
                     </div>
-                    <!-- 核心價值 2: 永續與創新 -->
                     <div class="core-value-card bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-seedling text-3xl mr-4" style="color: var(--secondary-green);"></i>
@@ -179,7 +166,6 @@
                             我們結合永續發展理念與先進金融科技，為您創造環境與財務的雙贏，持續尋找更綠色、更有效率的解決方案。
                         </p>
                     </div>
-                    <!-- 核心價值 3: 社群與影響力 -->
                     <div class="core-value-card bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-heart text-3xl mr-4" style="color: var(--secondary-green);"></i>
@@ -193,41 +179,31 @@
             </div>
         </div>
     </section>
-
-    <!-- Services Section -->
     <section id="services" class="section bg-gray-50 py-20">
         <div class="container mx-auto px-4">
             <div class="text-center">
-                <!-- 標題已簡化為「服務項目」 -->
                 <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">
                     服務項目
                 </h2>
-                <!-- 補充敘述已移除 -->
-            </div>
+                </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1: SLL 永續績效即時驗證 (SLL Performance Verification) -->
                 <div class="service-card rounded-xl shadow-lg p-8 transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
-                    <!-- Icon: Gauge High (代表績效追蹤) -->
                     <i class="fas fa-gauge-high text-5xl mb-4 text-white"></i>
                     <h3 class="text-xl font-semibold mb-2 text-white">SLL 永續績效即時驗證</h3>
                     <p class="text-base text-gray-200">
                         透過 API 技術，即時監控企業的 SPTs（關鍵績效指標）達成度，確保貸款利率調整的透明度與準確性，實現真正的永續連結。
                     </p>
                 </div>
-                
-                <!-- Service 2: SROI 社會價值協作量化 (SROI Monetization) -->
+
                 <div class="service-card rounded-xl shadow-lg p-8 transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
-                    <!-- Icon: Hand Holding Heart (代表社會影響力/公正轉型) -->
                     <i class="fas fa-hand-holding-heart text-5xl mb-4 text-white"></i>
                     <h3 class="text-xl font-semibold mb-2 text-white">SROI 社會價值協作量化</h3>
                     <p class="text-base text-gray-200">
                         運用公正轉型與社會投資報酬率模型，協助企業將「人才培訓」與「在地採購」等社會投入，貨幣化為可計算的淨社會價值。
                     </p>
                 </div>
-                
-                <!-- Service 3: 開放式 ESG 數據流 API 治理 (ESG API Data Governance) -->
+
                 <div class="service-card rounded-xl shadow-lg p-8 transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
-                    <!-- Icon: Code Branch (代表數據流與連結) -->
                     <i class="fas fa-code-branch text-5xl mb-4 text-white"></i>
                     <h3 class="text-xl font-semibold mb-2 text-white">開放式 ESG 數據流 API 治理</h3>
                     <p class="text-base text-gray-200">
@@ -235,60 +211,51 @@
                     </p>
                 </div>
             </div>
-        </div>
+            <div class="text-center mt-12">
+                <a href="yingying_cement_case_study.html" class="inline-block bg-secondary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-green-700 transition duration-300">
+                    <i class="fas fa-lightbulb mr-2"></i> 探索我們的最新案例：盈盈水泥集團
+                </a>
+            </div>
+            </div>
     </section>
-
-    <!-- Contact Section -->
     <section id="contact" class="contact py-20 text-white">
         <div class="container mx-auto px-4">
             <div class="max-w-xl mx-auto text-center">
                 <h2 class="text-4xl font-bold mb-2">聯絡我們</h2>
-                <!-- 使用新的 CSS class 來改變線條顏色 -->
                 <div class="w-20 h-1 mx-auto bg-contact-line my-4"></div>
             </div>
             <div class="max-w-xl mx-auto text-center space-y-4">
                 <p>如果您對我們的綠色金融解決方案有任何疑問，歡迎隨時與我們聯繫。</p>
-                <!-- 修改電子郵件地址 -->
                 <p>電子郵件：<a href="mailto:ecoshane.esg@gmail.com" class="hover:underline text-gray-300 hover:text-white transition duration-300">ecoshane.esg@gmail.com</a></p>
                 <p>電話：+886-2-1234-5678</p>
                 <p>地址：台灣台北市信義區永續路101號</p>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
     <footer class="footer text-gray-400 py-8">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2025 Ecoshane Bank. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <!-- Chatbot Section -->
     <div id="chatbot-container" class="fixed bottom-6 right-6 z-50">
-        <!-- Chatbot toggle button -->
         <button id="chat-toggle" class="w-16 h-16 text-white rounded-full shadow-lg flex items-center justify-center cursor-pointer transform transition-transform hover:scale-110 focus:outline-none" style="background-color: var(--primary-green);">
             <i class="fas fa-robot text-3xl"></i>
         </button>
 
-        <!-- Chat window -->
         <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 h-96 bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden">
-            <!-- Chat header -->
             <div class="text-white p-4 flex justify-between items-center rounded-t-xl" style="background-color: var(--primary-green);">
                 <h3 class="text-lg font-bold">智慧客服</h3>
                 <button id="chat-close" class="text-white hover:text-gray-200 focus:outline-none">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <!-- Chat messages area -->
             <div id="chat-messages" class="flex-1 p-4 space-y-4 overflow-y-auto">
-                <!-- Welcome message from bot -->
                 <div class="flex justify-start">
                     <div class="bg-gray-200 text-gray-800 rounded-lg p-3 max-w-[80%]">
                         <p>您好！我是 Ecoshane Bank 的智慧客服，很高興為您服務。請問有什麼可以協助您的嗎？</p>
                     </div>
                 </div>
             </div>
-            <!-- Chat input area -->
             <div class="p-4 border-t border-gray-200 flex items-center">
                 <input id="chat-input" type="text" placeholder="輸入您的訊息..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2" style="border-color: var(--secondary-green); focus:ring-color: var(--secondary-green);">
                 <button id="chat-send" class="ml-2 text-white rounded-full w-10 h-10 flex items-center justify-center transform transition-transform hover:scale-110 focus:outline-none" style="background-color: var(--primary-green);">
@@ -297,7 +264,6 @@
             </div>
         </div>
     </div>
-
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -344,6 +310,7 @@
 
         chatSendBtn.addEventListener('click', sendMessage);
 
+        // START: 智慧客服模擬 SLL 數據腳本 (已替換原有 sendMessage 函式)
         async function sendMessage() {
             const userMessage = chatInput.value.trim();
             if (userMessage === '') return;
@@ -351,48 +318,47 @@
             // Display user message
             addMessage(userMessage, 'user');
             chatInput.value = '';
-            
+
             // Display typing indicator
             const typingIndicator = addMessage('...', 'bot-typing');
-            
-            try {
-                const apiKey = ""; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-                
-                const payload = {
-                    contents: [{
-                        parts: [{
-                            text: userMessage
-                        }]
-                    }],
-                };
 
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
+            // --- 專題報告模擬數據邏輯 ---
+            let botResponse = "";
+            // 將所有輸入轉為小寫，以利關鍵字比對
+            const lowerCaseMessage = userMessage.toLowerCase();
 
-                const result = await response.json();
-                const botResponse = result.candidates?.[0]?.content?.parts?.[0]?.text || "抱歉，目前無法回答您的問題。";
-                
-                // Remove typing indicator and display bot response
-                chatMessages.removeChild(typingIndicator);
-                addMessage(botResponse, 'bot');
-
-            } catch (error) {
-                console.error("Error calling Gemini API:", error);
-                chatMessages.removeChild(typingIndicator);
-                addMessage("抱歉，連線失敗，請稍後再試。", 'bot');
+            if (lowerCaseMessage.includes('sll') || lowerCaseMessage.includes('履約') || lowerCaseMessage.includes('進度') || lowerCaseMessage.includes('碳排')) {
+                // 模擬查詢 SLL 核心環境 SPT (碳排強度)
+                botResponse = "您好！我們已透過 Open API 即時連接至貴集團 AWS 數據湖。最新的 SLL 核心環境 SPT 狀態如下：\n\n• **範疇一、二碳排放強度：** 實際下降 6.2% (年度目標 6.0%)。\n• **狀態：超額達成 (✓)。**";
+            } else if (lowerCaseMessage.includes('sroi') || lowerCaseMessage.includes('社會') || lowerCaseMessage.includes('轉型') || lowerCaseMessage.includes('公正')) {
+                // 模擬查詢 SROI 社會價值 SPT (公正轉型)
+                botResponse = "關於公正轉型指標 (盈才計畫)：\n\n• **轉崗成功率：** 當前為 75%。進度符合預期 (▲)。\n• **SROI 淨社會價值：** 經平台驗證，每投入 NT$ 1 元，已創造 NT$ 3.4 元的社會價值。";
+            } else if (lowerCaseMessage.includes('利率') || lowerCaseMessage.includes('優惠') || lowerCaseMessage.includes('成本') || lowerCaseMessage.includes('調整')) {
+                // 模擬查詢金融決策結果
+                botResponse = "系統根據兩項核心 SPT (環境與社會) 的達成狀態，確認貴集團履約成功。銀行將依協議，於下個季度自動適用 **25 bps 的利率優惠**。";
+            } else if (lowerCaseMessage.includes('永續家') || lowerCaseMessage.includes('顧問')) {
+                // 模擬查詢顧問相關服務
+                botResponse = "Ecoshane 永續家為您提供 SROI 方法論建立、公正轉型策略設計及第三方確信輔導。我們的專業顧問服務能確保您的 SPT 策略嚴謹有效。";
+            } else {
+                // 預設歡迎或引導詞
+                botResponse = "我是 Ecoshane Bank 的智慧客服。您可以輸入：SLL 履約進度、SROI 社會價值，或利率調整結果。";
             }
+            // --- 專題報告模擬數據邏輯 ---
+
+            // Delay for better demonstration effect (simulating network latency)
+            await new Promise(resolve => setTimeout(resolve, 800)); // 模擬 0.8 秒延遲
+
+            // Remove typing indicator and display bot response
+            chatMessages.removeChild(typingIndicator);
+            addMessage(botResponse, 'bot');
         }
+        // END: 智慧客服模擬 SLL 數據腳本 (已替換原有 sendMessage 函式)
+
 
         function addMessage(text, sender) {
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('flex');
-            
+
             if (sender === 'user') {
                 messageDiv.classList.add('justify-end');
                 messageDiv.innerHTML = `<div class="bg-green-500 text-white rounded-lg p-3 max-w-[80%]" style="background-color: var(--secondary-green);">${text}</div>`;
