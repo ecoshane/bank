@@ -1,171 +1,174 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>案例研究 | 盈盈水泥集團：首宗 SLL 社會價值整合案例 - Ecoshane Bank</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        :root {
-            --primary-green: #08290e;
-            --secondary-green: #14532d;
-            --deep-green: #061a0b;
-            --background-light: #f8f9fa;
-            --card-gradient-start: #4b855a;
-            --card-gradient-end: #102B13;
-        }
-        .text-primary { color: var(--primary-green); }
-        .bg-primary { background-color: var(--primary-green); }
-        .bg-secondary { background-color: var(--secondary-green); }
-        .hero-banner {
-            background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
-            background-size: cover;
-            background-position: center;
-        }
-        .result-card {
-            border-left: 5px solid var(--secondary-green);
-            transition: transform 0.3s ease;
-        }
-        .result-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例研究 | 盈盈水泥集團：首宗 SLL 社會價值整合案例 - Ecoshane Bank</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* 沿用銀行官網的深綠色系變數 */
+        :root {
+            --primary-green: #08290e;
+            --secondary-green: #14532d;
+            --deep-green: #061a0b;
+            --background-light: #f8f9fa;
+            --card-gradient-start: #4b855a;
+            --card-gradient-end: #102B13;
+        }
+        .text-primary { color: var(--primary-green); }
+        .bg-primary { background-color: var(--primary-green); }
+        .bg-secondary { background-color: var(--secondary-green); }
+        .hero-banner {
+            background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+            background-size: cover;
+            background-position: center;
+        }
+        .result-card {
+            border-left: 5px solid var(--secondary-green);
+            transition: transform 0.3s ease;
+        }
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-    <nav class="bg-white shadow-lg fixed top-0 w-full z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2">
-                <i class="fas fa-leaf text-3xl" style="color: var(--primary-green);"></i>
-                <span class="text-3xl font-bold text-gray-800">Ecoshane Bank</span>
-            </a>
-            <div class="space-x-4">
-                <a href="#challenge" class="text-gray-600 hover:text-green-700 transition duration-300">專案挑戰</a>
-                <a href="#solution" class="text-gray-600 hover:text-green-700 transition duration-300">解決方案</a>
-                <a href="#impact" class="text-gray-600 hover:text-green-700 transition duration-300">成果總結</a>
-            </div>
-        </div>
-    </nav>
+        <nav class="bg-white shadow-lg fixed top-0 w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <i class="fas fa-leaf text-3xl" style="color: var(--primary-green);"></i>
+                <span class="text-3xl font-bold text-gray-800">Ecoshane Bank</span>
+            </a>
+            <div class="space-x-4">
+                <a href="#challenge" class="text-gray-600 hover:text-green-700 transition duration-300">專案挑戰</a>
+                <a href="#solution" class="text-gray-600 hover:text-green-700 transition duration-300">解決方案</a>
+                <a href="#impact" class="text-gray-600 hover:text-green-700 transition duration-300">成果總結</a>
+            </div>
+        </div>
+    </nav>
 
-    <header id="hero" class="hero-banner text-white text-center pt-32 pb-20 mt-16">
-        <div class="max-w-4xl mx-auto px-4">
-            <p class="text-lg font-medium mb-3">永續連結貸款 SLL 成功案例</p>
-            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-                盈盈水泥集團：首宗社會價值整合 SLL 專案
-            </h1>
-            <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto">
-                運用 **SROI** 與 **Open API 數據治理**，實現低碳轉型與人力資本的雙重成功。
-            </p>
-        </div>
-    </header>
+        <header id="hero" class="hero-banner text-white text-center pt-32 pb-20 mt-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="text-lg font-medium mb-3">永續連結貸款 SLL 成功案例</p>
+            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
+                盈盈水泥集團：首宗社會價值整合 SLL 專案
+            </h1>
+                        <p class="text-xl font-light max-w-3xl mx-auto">
+                運用 **SROI** 與 **Open API 數據治理**，實現低碳轉型與人力資本的雙重成功。
+            </p>
+        </div>
+    </header>
 
-    <main class="container mx-auto px-4 py-20 max-w-6xl">
+    <main class="container mx-auto px-4 py-20 max-w-6xl">
 
-        <section id="challenge" class="mb-20">
-            <h2 class="text-4xl font-extrabold text-primary mb-6 text-center">
-                <i class="fas fa-exclamation-triangle mr-2"></i> 專案挑戰：淨零與公正轉型的兩難
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-lg">
-                <div class="p-6 bg-white rounded-xl shadow-lg">
-                    <h3 class="font-semibold text-2xl text-primary mb-3">脫碳壓力巨大</h3>
-                    <p class="text-gray-700">作為高碳排的水泥製造業，盈盈集團急需**實質性的脫碳金融支持**，且要求貸款成本與減排績效嚴格掛鉤。</p>
-                </div>
-                <div class="p-6 bg-white rounded-xl shadow-lg">
-                    <h3 class="font-semibold text-2xl text-primary mb-3">社會價值難量化</h3>
-                    <p class="text-gray-700">集團承諾**公正轉型（盈才計畫）**，但傳統銀行無法將「員工培訓」這類社會投入轉化為**金融指標**，難以獲得 SLL 優惠。</p>
-                </div>
-                <div class="p-6 bg-white rounded-xl shadow-lg">
-                    <h3 class="font-semibold text-2xl text-primary mb-3">數據治理瓶頸</h3>
-                    <p class="text-gray-700">缺乏標準化數據介面，導致碳排、能耗等 **SPT 數據無法即時提供**，影響年度審核效率和貸款利率的即時調整。</p>
-                </div>
-            </div>
-        </section>
+                <section id="challenge" class="mb-20">
+                        <h2 class="text-4xl font-bold text-primary mb-10 text-center">
+                <i class="fas fa-exclamation-triangle mr-2"></i> 專案挑戰：淨零與公正轉型的兩難
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-lg">
+                <div class="p-6 bg-white rounded-xl shadow-lg">
+                                        <h3 class="font-semibold text-2xl text-primary mb-3">脫碳壓力巨大</h3>
+                                        <p class="text-gray-700">作為高碳排的水泥製造業，盈盈集團急需**實質性的脫碳金融支持**，且要求貸款成本與減排績效嚴格掛鉤。</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg">
+                    <h3 class="font-semibold text-2xl text-primary mb-3">社會價值難量化</h3>
+                    <p class="text-gray-700">集團承諾**公正轉型（盈才計畫）**，但傳統銀行無法將「員工培訓」這類社會投入轉化為**金融指標**，難以獲得 SLL 優惠。</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg">
+                    <h3 class="font-semibold text-2xl text-primary mb-3">數據治理瓶頸</h3>
+                    <p class="text-gray-700">缺乏標準化數據介面，導致碳排、能耗等 **SPT 數據無法即時提供**，影響年度審核效率和貸款利率的即時調整。</p>
+                </div>
+            </div>
+        </section>
 
-        <section id="solution" class="bg-gray-100 p-16 rounded-3xl mb-20">
-            <h2 class="text-4xl font-extrabold text-primary mb-12 text-center">
-                <i class="fas fa-rocket mr-2"></i> Ecoshane Bank 創新解決方案
-            </h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-lg">
-                <div>
-                    <div class="flex items-start mb-4">
-                        <i class="fas fa-hand-holding-heart text-4xl mr-4 text-secondary"></i>
-                        <h3 class="font-bold text-2xl text-gray-800">SROI 社會價值貨幣化</h3>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        透過 **Ecoshane 永續家** 顧問團隊建立 SROI 模型，將「盈才計畫」轉崗培訓的**淨社會效益**（如避免失業成本、生產力提升）貨幣化，並納入 SLL 的核心社會 SPT。
-                    </p>
-                    <ul class="list-disc pl-8 text-gray-600">
-                        <li>協助將員工培訓轉化為 **可審核、可量化** 的金融資產。</li>
-                        <li>**首次**將 SROI 成果與貸款利率直接掛鉤，體現公正轉型價值。</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="flex items-start mb-4">
-                        <i class="fas fa-microchip text-4xl mr-4 text-secondary"></i>
-                        <h3 class="font-bold text-2xl text-gray-800">Open API 永續績效即時驗證</h3>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        使用 **AWS 雲端平台**和 **Open Banking API** 技術，建立安全且標準化的數據流，實現碳強度、能耗與培訓數據的**自動採集與即時驗證**。
-                    </p>
-                    <ul class="list-disc pl-8 text-gray-600">
-                        <li>Chatbot (智慧客服) 即時回覆履約狀態，省去冗長的年度審核流程。</li>
-                        <li>數據獲國際會計師事務所**有限確信**，確保最高的透明度與可靠性。</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+                <section id="solution" class="bg-gray-100 p-16 rounded-3xl mb-20">
+            <h2 class="text-4xl font-bold text-primary mb-12 text-center">
+                <i class="fas fa-rocket mr-2"></i> Ecoshane Bank 創新解決方案
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-lg">
+                <div>
+                    <div class="flex items-start mb-4">
+                        <i class="fas fa-hand-holding-heart text-4xl mr-4 text-secondary"></i>
+                        <h3 class="font-bold text-2xl text-gray-800">SROI 社會價值貨幣化</h3>
+                    </div>
+                                        <p class="text-gray-700 mb-4">
+                        透過 **Ecoshane 永續家** 顧問團隊建立 SROI 模型，將「盈才計畫」轉崗培訓的淨社會效益（如避免失業成本、生產力提升）貨幣化，並納入 SLL 的核心社會 SPT。
+                    </p>
+                    <ul class="list-disc pl-8 text-gray-600">
+                        <li>協助將員工培訓轉化為 **可審核、可量化** 的金融資產。</li>
+                        <li>**首次**將 SROI 成果與貸款利率直接掛鉤，體現公正轉型價值。</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="flex items-start mb-4">
+                        <i class="fas fa-microchip text-4xl mr-4 text-secondary"></i>
+                        <h3 class="font-bold text-2xl text-gray-800">Open API 永續績效即時驗證</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        使用 **AWS 雲端平台**和 **Open Banking API** 技術，建立安全且標準化的數據流，實現碳強度、能耗與培訓數據的**自動採集與即時驗證**。
+                    </p>
+                    <ul class="list-disc pl-8 text-gray-600">
+                        <li>Chatbot (智慧客服) 即時回覆履約狀態，省去冗長的年度審核流程。</li>
+                        <li>數據獲國際會計師事務所**有限確信**，確保最高的透明度與可靠性。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-        <section id="impact" class="text-center">
-            <h2 class="text-4xl font-extrabold text-primary mb-10">
-                <i class="fas fa-chart-line mr-2"></i> 專案成果與客戶價值
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="result-card p-8 bg-white rounded-xl shadow-lg text-left">
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-tree text-3xl mr-3 text-secondary"></i>
-                        <h4 class="font-bold text-2xl text-gray-800">環境：超額減排</h4>
-                    </div>
-                    <p class="text-4xl font-extrabold text-primary mb-2">6.2%</p>
-                    <p class="text-gray-600">範疇一、二碳排放強度實際下降率（目標 6.0%），**超額達成**年度 SPT。</p>
-                </div>
-                <div class="result-card p-8 bg-white rounded-xl shadow-lg text-left">
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-heart text-3xl mr-3 text-secondary"></i>
-                        <h4 class="font-bold text-2xl text-gray-800">社會：SROI 成功</h4>
-                    </div>
-                    <p class="text-4xl font-extrabold text-primary mb-2">1 : 3.4</p>
-                    <p class="text-gray-600">公正轉型（盈才計畫）每投入 NT$1 元，可為社會創造 **NT$3.4 元** 的淨價值。</p>
-                </div>
-                <div class="result-card p-8 bg-white rounded-xl shadow-lg text-left">
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-money-check-alt text-3xl mr-3 text-secondary"></i>
-                        <h4 class="font-bold text-2xl text-gray-800">財務：成本節約</h4>
-                    </div>
-                    <p class="text-4xl font-extrabold text-primary mb-2">25 bps</p>
-                    <p class="text-gray-600">因核心 SPT 達成，貸款自動觸發 **25 個基點**的利率優惠，實現成本節約。</p>
-                </div>
-            </div>
-        </section>
+                <section id="impact" class="text-center">
+            <h2 class="text-4xl font-bold text-primary mb-10">
+                <i class="fas fa-chart-line mr-2"></i> 專案成果與客戶價值
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="result-card p-8 bg-white rounded-xl shadow-lg text-left">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-tree text-3xl mr-3 text-secondary"></i>
+                        <h4 class="font-bold text-xl text-gray-800">環境：超額減排</h4>
+                    </div>
+                                        <p class="text-4xl font-extrabold text-primary mb-2">6.2%</p>
+                    <p class="text-gray-600">範疇一、二碳排放強度實際下降率（目標 6.0%），**超額達成**年度 SPT。</p>
+                </div>
+                <div class="result-card p-8 bg-white rounded-xl shadow-lg text-left">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-heart text-3xl mr-3 text-secondary"></i>
+                        <h4 class="font-bold text-xl text-gray-800">社會：SROI 成功</h4>
+                    </div>
+                    <p class="text-4xl font-extrabold text-primary mb-2">1 : 3.4</p>
+                    <p class="text-gray-600">公正轉型（盈才計畫）每投入 NT$1 元，可為社會創造 **NT$3.4 元** 的淨價值。</p>
+                </div>
+                <div class="result-card p-8 bg-white rounded-xl shadow-lg text-left">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-money-check-alt text-3xl mr-3 text-secondary"></i>
+                        <h4 class="font-bold text-xl text-gray-800">財務：成本節約</h4>
+                    </div>
+                    <p class="text-4xl font-extrabold text-primary mb-2">25 bps</p>
+                    <p class="text-gray-600">因核心 SPT 達成，貸款自動觸發 **25 個基點**的利率優惠，實現成本節約。</p>
+                </div>
+            </div>
+        </section>
 
-        <section class="mt-20 p-12 bg-secondary rounded-2xl shadow-xl text-white">
-            <i class="fas fa-quote-left text-4xl opacity-75 mb-4 block"></i>
-            <blockquote class="text-2xl font-light italic mb-4">
-                「Ecoshane Bank 的 SROI 整合服務，讓我們首次能用**金融語言**，向董事會證明公正轉型不只是費用，而是**高回報的投資**。API 即時驗證更讓我們的合規流程變得前所未有的簡單。」
-            </blockquote>
-            <p class="text-lg font-medium text-right">
-                — 盈盈水泥集團 永續長 (CSO)
-            </p>
-        </section>
-        
-    </main>
+                <section class="mt-20 p-12 bg-secondary rounded-2xl shadow-xl text-white">
+            <i class="fas fa-quote-left text-4xl opacity-75 mb-4 block"></i>
+                        <blockquote class="text-2xl font-light italic mb-4">
+                「Ecoshane Bank 的 SROI 整合服務，讓我們首次能用**金融語言**，向董事會證明公正轉型不只是費用，而是**高回報的投資**。API 即時驗證更讓我們的合規流程變得前所未有的簡單。」
+            </blockquote>
+            <p class="text-lg font-medium text-right">
+                — 盈盈水泥集團 永續長 (CSO)
+            </p>
+        </section>
+        
+    </main>
 
-    <footer class="bg-deep-green text-gray-400 py-8 text-center" style="background-color: var(--deep-green);">
-        <p>&copy; 2025 Ecoshane Bank. 以金融科技加速永續轉型。</p>
-    </footer>
+        <footer class="text-gray-400 py-8 text-center" style="background-color: var(--deep-green);">
+        <p>&copy; 2025 Ecoshane Bank. 以金融科技加速永續轉型。</p>
+    </footer>
 
 </body>
 </html>
