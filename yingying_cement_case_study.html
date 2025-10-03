@@ -44,14 +44,14 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* 更專業的陰影 */
         }
 
-        /* 最終確認的案例標題字體大小樣式 */
+        /* 最終確認的案例標題字體大小樣式 - 恢復為原先的 4xl/5xl */
         .case-title {
             font-size: 2.25rem; /* text-4xl */
             line-height: 1.2;
         }
         @media (min-width: 768px) {
             .case-title {
-                font-size: 3.5rem; /* text-6xl 略大於原本的 5xl，增加衝擊力 */
+                font-size: 3rem; /* text-5xl */
             }
         }
     </style>
@@ -79,27 +79,27 @@
         </div>
     </nav>
 
-    <!-- 英雄區塊 - 視覺衝擊優化 -->
+    <!-- 英雄區塊 - 置中標題，字體恢復 -->
     <header id="hero" class="hero-banner text-white text-center pt-32 pb-24 md:pt-40 md:pb-32 mt-[68px]">
         <div class="max-w-5xl mx-auto px-4">
-            <p class="text-lg md:text-xl font-medium mb-3 tracking-wider opacity-90">Ecoshane Bank 永續連結貸款 (SLL) 成功案例</p>
+            <p class="text-lg md:text-xl font-medium mb-3 tracking-wider opacity-90">Ecoshane Bank 永續連結貸款 SLL 成功案例</p>
             <h1 class="case-title font-extrabold tracking-tight mb-6">
                 盈盈水泥集團：<br>首宗社會價值整合 SLL 專案
             </h1>
             <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto opacity-80">
-                運用 <strong class="font-bold">社會投資報酬率 (SROI)</strong> 與 <strong class="font-bold">Open API 數據治理</strong>，實現低碳轉型與人力資本的雙重成功。
+                運用 <strong class="font-bold">社會投資報酬率 SROI</strong> 與 <strong class="font-bold">Open API 數據治理</strong>，實現低碳轉型與人力資本的雙重成功。
             </p>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-20 max-w-6xl">
 
-        <!-- 專案挑戰區塊 - 卡片陰影強化 -->
-        <section id="challenge" class="mb-24">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 text-center border-b-4 border-secondary/50 pb-3 inline-block">
+        <!-- 專案挑戰區塊 - 置中標題，移除部分括號 -->
+        <section id="challenge" class="mb-24 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 inline-block border-b-4 border-secondary/50 pb-3">
                 <i class="fas fa-exclamation-triangle mr-3"></i> 專案挑戰：淨零與公正轉型的兩難
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
                 <div class="p-8 bg-white rounded-xl shadow-xl h-full transition duration-300 hover:shadow-2xl">
                     <i class="fas fa-smog text-4xl mb-4" style="color: var(--secondary-green);"></i>
                     <h3 class="font-bold text-2xl text-primary mb-3">脫碳壓力巨大</h3>
@@ -108,7 +108,7 @@
                 <div class="p-8 bg-white rounded-xl shadow-xl h-full transition duration-300 hover:shadow-2xl">
                     <i class="fas fa-user-friends text-4xl mb-4" style="color: var(--secondary-green);"></i>
                     <h3 class="font-bold text-2xl text-primary mb-3">社會價值難量化</h3>
-                    <p class="text-gray-700 text-base leading-relaxed">集團承諾公正轉型（<strong class="font-bold">盈才計畫</strong>），但傳統銀行無法將「員工培訓」這類社會投入轉化為金融指標，難以獲得 SLL 優惠，阻礙了社會效益的驗證。</p>
+                    <p class="text-gray-700 text-base leading-relaxed">集團承諾公正轉型，推動<strong class="font-bold">「盈才計畫」</strong>，但傳統銀行無法將「員工培訓」這類社會投入轉化為金融指標，難以獲得 SLL 優惠，阻礙了社會效益的驗證。</p>
                 </div>
                 <div class="p-8 bg-white rounded-xl shadow-xl h-full transition duration-300 hover:shadow-2xl">
                     <i class="fas fa-database text-4xl mb-4" style="color: var(--secondary-green);"></i>
@@ -118,12 +118,12 @@
             </div>
         </section>
 
-        <!-- 解決方案區塊 - 內外邊距調整和視覺分割 -->
-        <section id="solution" class="p-10 md:p-16 rounded-3xl mb-24" style="background-color: var(--light-solution-bg);">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">
+        <!-- 解決方案區塊 - 置中標題，移除部分括號 -->
+        <section id="solution" class="p-10 md:p-16 rounded-3xl mb-24 text-center" style="background-color: var(--light-solution-bg);">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12">
                 <i class="fas fa-lightbulb mr-3"></i> Ecoshane Bank 創新解決方案
             </h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 text-left">
                 <!-- 解決方案 1: SROI 社會價值貨幣化 -->
                 <div class="p-8 bg-white rounded-xl shadow-xl">
                     <div class="flex items-start mb-4">
@@ -134,11 +134,11 @@
                         </div>
                     </div>
                     <p class="text-gray-700 text-lg mb-4 leading-relaxed border-l-4 border-gray-200 pl-4">
-                        透過 Ecoshane 永續家顧問團隊建立嚴謹的 <strong class="font-bold">SROI (社會投資報酬率) 模型</strong>，將「盈才計畫」轉崗培訓的淨社會效益（如避免失業成本、生產力提升）貨幣化，並將其納入 SLL 的核心社會 SPT。
+                        透過 Ecoshane 永續家顧問團隊建立嚴謹的 <strong class="font-bold">社會投資報酬率 SROI 模型</strong>，將「盈才計畫」轉崗培訓的淨社會效益，如避免失業成本與生產力提升，進行貨幣化，並將其納入 SLL 的核心社會 SPT。
                     </p>
                     <ul class="list-none space-y-2 text-gray-700 text-base mt-6">
                         <li class="flex items-start"><i class="fas fa-check-circle text-secondary mt-1 mr-3"></i> 協助將員工培訓轉化為 <strong class="font-bold">可審核、可量化</strong> 的金融資產。</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-secondary mt-1 mr-3"></i> 首次將 SROI 成果與貸款利率直接掛鉤，體現公正轉型價值。</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-secondary mt-1 mr-3"></i> 首次將 SROI 成果與貸款利率直接掛鉤，具體體現公正轉型價值。</li>
                     </ul>
                 </div>
                 
@@ -162,9 +162,9 @@
             </div>
         </section>
 
-        <!-- 專案成果區塊 - 關鍵數據視覺強化 -->
+        <!-- 專案成果區塊 - 關鍵數據恢復到 text-4xl，移除括號 -->
         <section id="impact" class="text-center mb-24">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 border-b-4 border-secondary/50 pb-3 inline-block">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 inline-block border-b-4 border-secondary/50 pb-3">
                 <i class="fas fa-award mr-3"></i> 專案成果與客戶價值總結
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -174,9 +174,9 @@
                         <i class="fas fa-tree text-3xl mr-3" style="color: var(--secondary-green);"></i>
                         <h4 class="font-bold text-xl text-gray-800">環境效益：超額減排達成</h4>
                     </div>
-                    <p class="text-5xl md:text-6xl font-extrabold text-primary mb-2 tracking-tighter">6.2%</p>
+                    <p class="text-4xl font-extrabold text-primary mb-2 tracking-tighter">6.2%</p>
                     <p class="text-gray-600 text-base font-medium">範疇一、二碳排放強度實際下降率</p>
-                    <p class="text-sm text-gray-500 mt-1">（超額達成年度 SPT 目標 6.0%）</p>
+                    <p class="text-sm text-gray-500 mt-1">超額達成年度 SPT 目標 6.0%。</p>
                 </div>
                 <!-- 成果 2: 社會/SROI 成功 -->
                 <div class="result-card p-8 bg-white rounded-xl shadow-lg text-left">
@@ -184,9 +184,9 @@
                         <i class="fas fa-heart text-3xl mr-3" style="color: var(--secondary-green);"></i>
                         <h4 class="font-bold text-xl text-gray-800">社會價值：高回報 SROI</h4>
                     </div>
-                    <p class="text-5xl md:text-6xl font-extrabold text-primary mb-2 tracking-tighter">1 : 3.4</p>
+                    <p class="text-4xl font-extrabold text-primary mb-2 tracking-tighter">1 : 3.4</p>
                     <p class="text-gray-600 text-base font-medium">公正轉型 (盈才計畫) 社會價值淨回報</p>
-                    <p class="text-sm text-gray-500 mt-1">（每投入 NT$1 元，創造 NT$3.4 元社會淨價值）</p>
+                    <p class="text-sm text-gray-500 mt-1">每投入 NT$1 元，創造 NT$3.4 元社會淨價值。</p>
                 </div>
                 <!-- 成果 3: 財務/成本節約 -->
                 <div class="result-card p-8 bg-white rounded-xl shadow-lg text-left">
@@ -194,23 +194,23 @@
                         <i class="fas fa-money-check-alt text-3xl mr-3" style="color: var(--secondary-green);"></i>
                         <h4 class="font-bold text-xl text-gray-800">財務效益：貸款成本節約</h4>
                     </div>
-                    <p class="text-5xl md:text-6xl font-extrabold text-primary mb-2 tracking-tighter">25 bps</p>
+                    <p class="text-4xl font-extrabold text-primary mb-2 tracking-tighter">25 bps</p>
                     <p class="text-gray-600 text-base font-medium">核心 SPT 達成後觸發的利率優惠</p>
-                    <p class="text-sm text-gray-500 mt-1">（數據化履約流程實現貸款自動降息）</p>
+                    <p class="text-sm text-gray-500 mt-1">數據化履約流程實現貸款自動降息。</p>
                 </div>
             </div>
         </section>
 
-        <!-- 客戶引言區塊 - 提升對比度與排版 -->
+        <!-- 客戶引言區塊 - 置中排版 (已移除粗體和斜體) -->
         <section class="mt-20 p-10 md:p-12 rounded-2xl shadow-2xl text-white max-w-4xl mx-auto" style="background-color: var(--secondary-green);">
             <div class="flex items-start">
                 <i class="fas fa-quote-left text-4xl opacity-75 mr-6 mt-1 hidden sm:block"></i>
                 <div>
-                    <blockquote class="text-xl md:text-2xl font-light italic mb-6 leading-relaxed">
-                        「Ecoshane Bank 的 SROI 整合服務，讓我們首次能用<strong class="font-bold">金融語言</strong>，向董事會證明公正轉型不只是費用，而是<strong class="font-bold">高回報的投資</strong>。API 即時驗證更讓我們的合規流程變得前所未有的簡單。」
+                    <blockquote class="text-xl md:text-2xl font-light mb-6 leading-relaxed">
+                        「Ecoshane Bank 的 SROI 整合服務，讓我們首次能用金融語言，向董事會證明公正轉型不只是費用，而是高回報的投資。API 即時驗證更讓我們的合規流程變得前所未有的簡單。」
                     </blockquote>
-                    <p class="text-lg font-medium text-right border-t border-white/50 pt-3">
-                        — 盈盈水泥集團 永續長 (CSO)
+                    <p class="text-base font-light text-right border-t border-white/50 pt-3 opacity-90">
+                        — 盈盈水泥集團 永續長 CSO
                     </p>
                 </div>
             </div>
