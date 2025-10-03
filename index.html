@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecoshane Bank - 永續綠色金融</title>
+    <!-- 載入 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 載入 Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- 載入 Inter 字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,15 +17,17 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* 根據您提供的結構，定義深綠色系變數 */
+        /* 根據永續主題，定義深綠色系變數 */
         :root {
-            --primary-green: #08290e;
-            --secondary-green: #14532d;
-            --deep-green: #061a0b; 
-            --background-light: #f8f9fa;
-            --background-dark: #102B13;
+            --primary-green: #08290e; /* 主深綠色 (近乎黑) */
+            --secondary-green: #14532d; /* 輔助深綠色 (按鈕、互動色) */
+            --deep-green: #061a0b; /* 更深的背景色 */ 
+            --background-light: #f8f9fa; /* 淺背景色 */
+            --background-dark: #102B13; /* 深背景色 */
             --card-gradient-start: #4b855a;
             --card-gradient-end: #102B13;
+            /* 風險/懲罰專用顏色 */
+            --warning-red: #cc2a2a; 
         }
 
         /* 預設區塊背景 (淺色) */
@@ -55,6 +60,11 @@
             background: linear-gradient(135deg, var(--card-gradient-start) 0%, var(--card-gradient-end) 100%);
             color: white;
         }
+        /* 風險卡片使用紅色漸層以凸顯警告 */
+        .risk-card {
+            /* 修正為風險卡片使用紅色漸層，但移除所有負面字眼，使其成為風險提醒 */
+            background: linear-gradient(135deg, #d35a5a 0%, var(--warning-red) 100%);
+        }
 
         /* 統一顏色為深綠色系 */
         .text-green-500 { color: var(--primary-green); }
@@ -64,7 +74,7 @@
         .bg-green-600 { background-color: var(--primary-green); }
         .bg-green-700 { background-color: var(--primary-green); }
 
-        /* Custom section title style with a gradient underline */
+        /* 區塊標題樣式與漸層底線 */
         .section-title::after {
             content: '';
             display: block;
@@ -75,12 +85,12 @@
             border-radius: 2px;
         }
         
-        /* 成功案例區塊標題專用樣式 */
+        /* 成功案例區塊標題專用樣式 (白色底線) */
         .portfolio-title::after {
             background: linear-gradient(90deg, #FFFFFF, var(--secondary-green));
         }
 
-        /* 核心價值卡片的獨特樣式 */
+        /* 核心價值卡片的動態樣式 */
         .core-value-card {
             border-bottom: 4px solid var(--secondary-green);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -97,12 +107,14 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
+    <!-- 導航列 (固定於頂部) -->
     <nav class="bg-white shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#hero" class="flex items-center space-x-2">
                 <i class="fas fa-leaf text-3xl" style="color: var(--primary-green);"></i>
                 <span class="text-3xl font-bold text-gray-800">Ecoshane Bank</span>
             </a>
+            <!-- 桌面版導航連結 -->
             <div class="space-x-4 hidden md:flex">
                 <a href="#hero" class="text-gray-600 hover:text-green-700 transition duration-300">首頁</a>
                 <a href="#about" class="text-gray-600 hover:text-green-700 transition duration-300">關於我們</a>
@@ -111,10 +123,12 @@
                 <a href="#portfolio" class="text-gray-600 hover:text-green-700 transition duration-300">成功案例</a>
                 <a href="#contact" class="text-gray-600 hover:text-green-700 transition duration-300">聯絡我們</a>
             </div>
+            <!-- 手機版菜單按鈕 -->
             <button id="menu-btn" class="text-gray-600 md:hidden focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
         </div>
+        <!-- 手機版下拉菜單 -->
         <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner pb-2">
             <a href="#hero" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">首頁</a>
             <a href="#about" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">關於我們</a>
@@ -124,6 +138,8 @@
             <a href="#contact" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">聯絡我們</a>
         </div>
     </nav>
+    
+    <!-- 英雄橫幅區塊 (Hero Section) -->
     <header id="hero" class="hero text-white text-center py-40 mt-16">
         <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
             Ecoshane Bank
@@ -131,9 +147,15 @@
         <p class="text-base md:text-lg max-w-full mx-auto mb-8 whitespace-nowrap">
             我們以金融科技加速永續轉型，為您提供專屬的綠色金融解決方案。
         </p>
+        <!-- CTA 按鈕 (新增) -->
         <div class="space-x-4">
-            </div>
+            <a href="#services" class="inline-block bg-white text-gray-800 font-semibold py-3 px-8 rounded-full shadow-xl hover:bg-gray-200 transition duration-300 transform hover:scale-105">
+                探索我們的綠色金融方案
+            </a>
+        </div>
     </header>
+    
+    <!-- 關於我們區塊 -->
     <section id="about" class="section py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center">
@@ -146,6 +168,8 @@
             </div>
         </div>
     </section>
+    
+    <!-- 核心價值區塊 -->
     <section id="core-values" class="section bg-gray-100 py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-5xl mx-auto">
@@ -153,6 +177,7 @@
                     <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">核心價值</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 核心價值卡片 1 -->
                     <div class="core-value-card bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-handshake text-3xl mr-4" style="color: var(--secondary-green);"></i>
@@ -162,6 +187,7 @@
                             我們提供公開、透明的金融服務，確保每一筆資金都流向對環境友善的項目，為客戶建立堅實的信任基礎。
                         </p>
                     </div>
+                    <!-- 核心價值卡片 2 -->
                     <div class="core-value-card bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-seedling text-3xl mr-4" style="color: var(--secondary-green);"></i>
@@ -171,6 +197,7 @@
                             我們結合永續發展理念與先進金融科技，為您創造環境與財務的雙贏，持續尋找更綠色、更有效率的解決方案。
                         </p>
                     </div>
+                    <!-- 核心價值卡片 3 -->
                     <div class="core-value-card bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-heart text-3xl mr-4" style="color: var(--secondary-green);"></i>
@@ -184,14 +211,20 @@
             </div>
         </div>
     </section>
+    
+    <!-- 服務項目區塊 -->
     <section id="services" class="section bg-gray-50 py-20">
         <div class="container mx-auto px-4">
             <div class="text-center">
                 <h2 class="section-title text-4xl font-bold text-gray-800 mb-2">
                     服務項目
                 </h2>
-                </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <p class="text-lg text-gray-600 max-w-4xl mx-auto mb-12">
+                    我們的核心價值在於透過科技實現獎勵與條件調整的精準化，確保永續績效與金融條件直接掛鉤。
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 服務項目 1: SLL 永續績效即時驗證 (獎勵基礎) -->
                 <div class="service-card rounded-xl shadow-lg p-8 transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
                     <i class="fas fa-gauge-high text-5xl mb-4 text-white"></i>
                     <h3 class="text-xl font-semibold mb-2 text-white">SLL 永續績效即時驗證</h3>
@@ -200,6 +233,7 @@
                     </p>
                 </div>
 
+                <!-- 服務項目 2: SROI 社會價值協作量化 (公正轉型支持) -->
                 <div class="service-card rounded-xl shadow-lg p-8 transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
                     <i class="fas fa-hand-holding-heart text-5xl mb-4 text-white"></i>
                     <h3 class="text-xl font-semibold mb-2 text-white">SROI 社會價值協作量化</h3>
@@ -208,6 +242,7 @@
                     </p>
                 </div>
 
+                <!-- 服務項目 3: 開放式 ESG 數據流 API 治理 (風險透明化) -->
                 <div class="service-card rounded-xl shadow-lg p-8 transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
                     <i class="fas fa-code-branch text-5xl mb-4 text-white"></i>
                     <h3 class="text-xl font-semibold mb-2 text-white">開放式 ESG 數據流 API 治理</h3>
@@ -215,18 +250,28 @@
                         協助客戶建立高安全性、標準化的 ESG API 數據接口，即時實現碳排、能源消耗、在地金流與金融夥伴之間的無縫數據共享與治理。
                     </p>
                 </div>
+
+                <!-- 服務項目 4: 即時風險預警與金融條件調整 (中性描述) -->
+                <div class="risk-card rounded-xl shadow-lg p-8 transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                    <i class="fas fa-triangle-exclamation text-5xl mb-4 text-white"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-white">即時風險預警與金融條件調整</h3>
+                    <p class="text-base text-gray-200">
+                        若 SPTs 未能達到協議目標，系統將自動觸發風險預警通知。依據合約條款，這將啟動貸款利率的調整，以反映履約狀態，有效管理永續金融履約風險。
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- 成功案例區塊 -->
     <section id="portfolio" class="py-20 text-white" style="background-color: var(--background-dark);">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="section-title text-4xl font-bold mb-2">
-                成功案例
+            <h2 class="section-title portfolio-title text-4xl font-bold mb-2">
+                成功案例：風險轉化為機會
             </h2>
             <div class="max-w-4xl mx-auto">
                 <p class="text-xl leading-loose font-medium mb-10 text-gray-300">
-                    Ecoshane Bank 的金融科技創新，已成功協助高碳排企業實現公正轉型與財務優化。
+                    Ecoshane Bank 的金融科技創新，已成功協助高碳排企業實現公正轉型與財務優化，同時確保維持最佳<strong class="font-bold">金融條件</strong>。
                 </p>
 
                 <div class="rounded-xl shadow-2xl p-8 md:p-12 text-left transition duration-500 hover:scale-[1.02]" style="background-color: var(--secondary-green);">
@@ -236,13 +281,14 @@
                             <h3 class="text-3xl font-bold mb-3 text-white">盈盈水泥集團：公正轉型的最佳典範</h3>
                             
                             <p class="text-lg text-gray-200 mb-4">
-                                <strong>挑戰：</strong> 傳統水泥業在脫碳過程中，如何將「員工轉崗培訓」的社會價值，轉化為實質的金融收益？
+                                <strong class="font-bold">挑戰：</strong> 傳統水泥業在脫碳過程中，如何將「員工轉崗培訓」的社會價值，轉化為實質的金融收益，並避免永續績效的金融風險？
                             </p>
                             <p class="text-lg text-gray-200 mb-6">
-                                <strong>成果：</strong> 成功實現碳排強度下降 <strong>6.2%</strong>，並經 SROI 模型驗證，社會投入創造 <strong>1:3.4</strong> 淨價值，自動觸發貸款<strong>利率優惠</strong>。
+                                <strong class="font-bold">成果：</strong> 成功實現碳排強度下降 <strong class="font-bold">6.2%</strong>，並經 SROI 模型驗證，社會投入創造 <strong class="font-bold">1:3.4</strong> 淨價值，自動觸發貸款<strong class="font-bold">利率優惠</strong>。
                             </p>
                             
-                            <a href="yingying_cement_case_study.html" class="inline-block bg-white text-gray-800 font-semibold py-3 px-8 rounded-full shadow-xl hover:bg-gray-200 transition duration-300">
+                            <!-- 外部連結範例 -->
+                            <a href="#" class="inline-block bg-white text-gray-800 font-semibold py-3 px-8 rounded-full shadow-xl hover:bg-gray-200 transition duration-300">
                                 <i class="fas fa-arrow-right mr-2"></i> 深入了解此案例
                             </a>
                         </div>
@@ -255,6 +301,8 @@
             </div>
         </div>
     </section>
+    
+    <!-- 聯絡我們區塊 -->
     <section id="contact" class="contact py-20 text-white">
         <div class="container mx-auto px-4">
             <div class="max-w-xl mx-auto text-center">
@@ -269,23 +317,31 @@
             </div>
         </div>
     </section>
+    
+    <!-- 頁腳 -->
     <footer class="footer text-gray-400 py-8">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2025 Ecoshane Bank. All Rights Reserved.</p>
         </div>
     </footer>
+    
+    <!-- 智慧客服 Chatbot 浮動區塊 -->
     <div id="chatbot-container" class="fixed bottom-6 right-6 z-50">
+        <!-- 開啟按鈕 -->
         <button id="chat-toggle" class="w-16 h-16 text-white rounded-full shadow-lg flex items-center justify-center cursor-pointer transform transition-transform hover:scale-110 focus:outline-none" style="background-color: var(--primary-green);">
             <i class="fas fa-robot text-3xl"></i>
         </button>
 
+        <!-- 聊天視窗 -->
         <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 h-96 bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden">
+            <!-- 聊天視窗標題 -->
             <div class="text-white p-4 flex justify-between items-center rounded-t-xl" style="background-color: var(--primary-green);">
                 <h3 class="text-lg font-bold">智慧客服</h3>
                 <button id="chat-close" class="text-white hover:text-gray-200 focus:outline-none">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
+            <!-- 訊息顯示區 -->
             <div id="chat-messages" class="flex-1 p-4 space-y-4 overflow-y-auto">
                 <div class="flex justify-start">
                     <div class="bg-gray-200 text-gray-800 rounded-lg p-3 max-w-[80%]">
@@ -293,6 +349,7 @@
                     </div>
                 </div>
             </div>
+            <!-- 輸入區 -->
             <div class="p-4 border-t border-gray-200 flex items-center">
                 <input id="chat-input" type="text" placeholder="輸入您的訊息..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2" style="border-color: var(--secondary-green); focus:ring-color: var(--secondary-green);">
                 <button id="chat-send" class="ml-2 text-white rounded-full w-10 h-10 flex items-center justify-center transform transition-transform hover:scale-110 focus:outline-none" style="background-color: var(--primary-green);">
@@ -301,29 +358,34 @@
             </div>
         </div>
     </div>
+    
+    <!-- JavaScript 邏輯 -->
     <script>
-        // Smooth scrolling for navigation links
+        // 確保連結點擊時平滑滾動
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    targetElement.scrollIntoView({
+                    // 考慮固定導航列的高度，調整滾動位置
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    window.scrollTo({
+                        top: targetElement.offsetTop - navHeight,
                         behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Mobile menu toggle
+        // 手機選單切換
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Chatbot functionality
+        // Chatbot DOM 元素
         const chatToggleBtn = document.getElementById('chat-toggle');
         const chatCloseBtn = document.getElementById('chat-close');
         const chatWindow = document.getElementById('chat-window');
@@ -331,6 +393,7 @@
         const chatInput = document.getElementById('chat-input');
         const chatSendBtn = document.getElementById('chat-send');
 
+        // 開啟/關閉聊天視窗
         chatToggleBtn.addEventListener('click', () => {
             chatWindow.classList.toggle('hidden');
         });
@@ -339,6 +402,7 @@
             chatWindow.classList.add('hidden');
         });
 
+        // 監聽 Enter 鍵發送訊息
         chatInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 sendMessage();
@@ -347,59 +411,63 @@
 
         chatSendBtn.addEventListener('click', sendMessage);
 
-        // 智慧客服模擬 SLL 數據腳本 (已替換原有 sendMessage 函式)
+        // 智慧客服模擬 SLL 數據腳本 (已移除所有負面詞彙和格式符號)
         async function sendMessage() {
             const userMessage = chatInput.value.trim();
             if (userMessage === '') return;
 
-            // Display user message
+            // 1. 顯示使用者訊息
             addMessage(userMessage, 'user');
             chatInput.value = '';
 
-            // Display typing indicator
+            // 2. 顯示輸入中指示
             const typingIndicator = addMessage('...', 'bot-typing');
 
-            // --- 專題報告模擬數據邏輯 ---
             let botResponse = "";
             // 將所有輸入轉為小寫，以利關鍵字比對
             const lowerCaseMessage = userMessage.toLowerCase();
 
+            // 3. 處理模擬業務邏輯
             if (lowerCaseMessage.includes('sll') || lowerCaseMessage.includes('履約') || lowerCaseMessage.includes('進度') || lowerCaseMessage.includes('碳排')) {
-                // 模擬查詢 SLL 核心環境 SPT (碳排強度)
-                botResponse = "您好！我們已透過 Open API 即時連接至貴集團 AWS 數據湖。最新的 SLL 核心環境 SPT 狀態如下：\n\n• **範疇一、二碳排放強度：** 實際下降 6.2% (年度目標 6.0%)。\n• **狀態：超額達成 (✓)。**";
+                // 模擬查詢 SLL 核心環境 SPT (碳排強度) - 成功情境
+                botResponse = "您好！我們已透過 Open API 即時連接至貴集團 AWS 數據湖。最新的 SLL 核心環境 SPT 狀態如下：\n\n• 範疇一、二碳排放強度：實際下降 6.2% (年度目標 6.0%)。\n• 狀態：超額達成 (✓)。";
             } else if (lowerCaseMessage.includes('sroi') || lowerCaseMessage.includes('社會') || lowerCaseMessage.includes('轉型') || lowerCaseMessage.includes('公正')) {
                 // 模擬查詢 SROI 社會價值 SPT (公正轉型)
-                botResponse = "關於公正轉型指標 (盈才計畫)：\n\n• **轉崗成功率：** 當前為 75%。進度符合預期 (▲)。\n• **SROI 淨社會價值：** 經平台驗證，每投入 NT$ 1 元，已創造 NT$ 3.4 元的社會價值。";
-            } else if (lowerCaseMessage.includes('利率') || lowerCaseMessage.includes('優惠') || lowerCaseMessage.includes('成本') || lowerCaseMessage.includes('調整')) {
-                // 模擬查詢金融決策結果
-                botResponse = "系統根據兩項核心 SPT (環境與社會) 的達成狀態，確認貴集團履約成功。銀行將依協議，於下個季度自動適用 **25 bps 的利率優惠**。";
+                botResponse = "關於公正轉型指標 (盈才計畫)：\n\n• 轉崗成功率：當前為 75%。進度符合預期 (▲)。\n• SROI 淨社會價值：經平台驗證，每投入 NT$ 1 元，已創造 NT$ 3.4 元的社會價值。";
+            } else if (lowerCaseMessage.includes('利率') || lowerCaseMessage.includes('優惠') || lowerCaseMessage.includes('調整')) {
+                // 模擬查詢金融決策結果 - 成功情境
+                botResponse = "系統根據兩項核心 SPT (環境與社會) 的達成狀態，確認貴集團履約成功。銀行將依協議，於下個季度自動適用 <span class='font-bold'>25 bps 的利率優惠</span>。";
+            } else if (lowerCaseMessage.includes('金融條件調整') || lowerCaseMessage.includes('風險') || lowerCaseMessage.includes('未達標') || lowerCaseMessage.includes('水')) {
+                 // 模擬查詢金融決策結果 - 未達標/條件調升情境 (修正為中性措辭)
+                botResponse = "<p style='color: var(--warning-red); font-weight: bold;'>⚠️ 風險警示通知 ⚠️</p>系統偵測到「水資源利用效率」SPT 未達標（年度目標減少 5%，實際僅減少 1.2%）。依據合約條款，銀行將於下個季度自動觸發 <span class='font-bold'>15 bps 的利率條件調升</span>。建議您立即聯繫永續顧問調整策略。";
             } else if (lowerCaseMessage.includes('永續家') || lowerCaseMessage.includes('顧問')) {
                 // 模擬查詢顧問相關服務
                 botResponse = "Ecoshane 永續家為您提供 SROI 方法論建立、公正轉型策略設計及第三方確信輔導。我們的專業顧問服務能確保您的 SPT 策略嚴謹有效。";
             } else {
-                // 預設歡迎或引導詞
-                botResponse = "我是 Ecoshane Bank 的智慧客服。您可以輸入：SLL 履約進度、SROI 社會價值，或利率調整結果。";
+                // 預設歡迎或引導詞 (修正為中性用語)
+                botResponse = "我是 Ecoshane Bank 的智慧客服。您可以輸入：SLL 履約進度、SROI 社會價值、利率調整結果，或輸入 <span class='font-bold'>金融條件調整</span> 查看履約風險。";
             }
-            // --- 專題報告模擬數據邏輯 ---
 
-            // Delay for better demonstration effect (simulating network latency)
-            await new Promise(resolve => setTimeout(resolve, 800)); // 模擬 0.8 秒延遲
+            // 4. 延遲模擬網路延遲
+            await new Promise(resolve => setTimeout(resolve, 800)); 
 
-            // Remove typing indicator and display bot response
+            // 5. 移除輸入中指示並顯示機器人回應
             chatMessages.removeChild(typingIndicator);
             addMessage(botResponse, 'bot');
         }
 
 
+        // 將訊息加入聊天視窗
         function addMessage(text, sender) {
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('flex');
 
             if (sender === 'user') {
                 messageDiv.classList.add('justify-end');
-                messageDiv.innerHTML = `<div class="bg-green-500 text-white rounded-lg p-3 max-w-[80%]" style="background-color: var(--secondary-green);">${text}</div>`;
+                messageDiv.innerHTML = `<div class="text-white rounded-lg p-3 max-w-[80%] shadow-md" style="background-color: var(--secondary-green);">${text}</div>`;
             } else if (sender === 'bot') {
                 messageDiv.classList.add('justify-start');
+                // 使用 innerHTML 渲染帶有樣式的風險警示
                 messageDiv.innerHTML = `<div class="bg-gray-200 text-gray-800 rounded-lg p-3 max-w-[80%]">${text}</div>`;
             } else if (sender === 'bot-typing') {
                 messageDiv.classList.add('justify-start');
@@ -407,7 +475,7 @@
             }
 
             chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight; // 滾動到底部
             return messageDiv;
         }
     </script>
