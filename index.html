@@ -60,15 +60,14 @@
             background: linear-gradient(135deg, var(--card-gradient-start) 0%, var(--card-gradient-end) 100%);
             color: white;
         }
-        /* 風險卡片使用紅色漸層以凸顯警告 */
+        /* 風險卡片使用紅色漸層以凸顯提醒 */
         .risk-card {
-            /* 修正為風險卡片使用紅色漸層，但移除所有負面字眼，使其成為風險提醒 */
             background: linear-gradient(135deg, #d35a5a 0%, var(--warning-red) 100%);
         }
 
         /* 統一顏色為深綠色系 */
         .text-green-500 { color: var(--primary-green); }
-        .hover\:text-green-500:hover { color: var(--secondary-green); }
+        .hover\:text-green-700:hover { color: var(--secondary-green); } /* 修復：使用自定義輔助色作為 hover 效果 */
         .bg-green-500 { background-color: var(--primary-green); }
         .hover\:bg-green-600:hover { background-color: var(--secondary-green); }
         .bg-green-600 { background-color: var(--primary-green); }
@@ -104,6 +103,18 @@
         .bg-contact-line {
             background-color: var(--deep-green);
         }
+
+        /* Chatbot 輸入框的聚焦樣式 (修正焦點環錯誤) */
+        .chat-input:focus {
+            border-color: var(--secondary-green);
+            /* 模擬 focus:ring-2 效果，使用 CSS 變數 */
+            box-shadow: 0 0 0 2px rgba(20, 83, 45, 0.5); /* secondary-green 的半透明陰影 */
+        }
+        
+        /* 聊天訊息的風險警示文字顏色 */
+        .text-warning-red {
+            color: var(--warning-red);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -130,12 +141,12 @@
         </div>
         <!-- 手機版下拉菜單 -->
         <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner pb-2">
-            <a href="#hero" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">首頁</a>
-            <a href="#about" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">關於我們</a>
-            <a href="#core-values" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">核心價值</a>
-            <a href="#services" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">服務項目</a>
-            <a href="#portfolio" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">成功案例</a>
-            <a href="#contact" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">聯絡我們</a>
+            <a href="#hero" class="mobile-menu-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">首頁</a>
+            <a href="#about" class="mobile-menu-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">關於我們</a>
+            <a href="#core-values" class="mobile-menu-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">核心價值</a>
+            <a href="#services" class="mobile-menu-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">服務項目</a>
+            <a href="#portfolio" class="mobile-menu-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">成功案例</a>
+            <a href="#contact" class="mobile-menu-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">聯絡我們</a>
         </div>
     </nav>
     
@@ -144,7 +155,8 @@
         <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
             Ecoshane Bank
         </h1>
-        <p class="text-base md:text-lg max-w-full mx-auto mb-8 whitespace-nowrap">
+        <p class="text-base md:text-lg max-w-full mx-auto mb-8">
+            <!-- 移除 whitespace-nowrap 以確保行動裝置上的文字換行正常 -->
             我們以金融科技加速永續轉型，為您提供專屬的綠色金融解決方案。
         </p>
         <!-- CTA 按鈕 (新增) -->
@@ -351,7 +363,7 @@
             </div>
             <!-- 輸入區 -->
             <div class="p-4 border-t border-gray-200 flex items-center">
-                <input id="chat-input" type="text" placeholder="輸入您的訊息..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2" style="border-color: var(--secondary-green); focus:ring-color: var(--secondary-green);">
+                <input id="chat-input" type="text" placeholder="輸入您的訊息..." class="chat-input flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2" style="border-color: var(--secondary-green);">
                 <button id="chat-send" class="ml-2 text-white rounded-full w-10 h-10 flex items-center justify-center transform transition-transform hover:scale-110 focus:outline-none" style="background-color: var(--primary-green);">
                     <i class="fas fa-paper-plane"></i>
                 </button>
@@ -367,6 +379,15 @@
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
+                
+                // 【修復 2: 點擊連結後自動關閉手機選單】
+                if (this.classList.contains('mobile-menu-link')) {
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+
                 if (targetElement) {
                     // 考慮固定導航列的高度，調整滾動位置
                     const navHeight = document.querySelector('nav').offsetHeight;
@@ -411,7 +432,7 @@
 
         chatSendBtn.addEventListener('click', sendMessage);
 
-        // 智慧客服模擬 SLL 數據腳本 (已移除所有負面詞彙和格式符號)
+        // 智慧客服模擬 SLL 數據腳本 
         async function sendMessage() {
             const userMessage = chatInput.value.trim();
             if (userMessage === '') return;
@@ -438,13 +459,13 @@
                 // 模擬查詢金融決策結果 - 成功情境
                 botResponse = "系統根據兩項核心 SPT (環境與社會) 的達成狀態，確認貴集團履約成功。銀行將依協議，於下個季度自動適用 <span class='font-bold'>25 bps 的利率優惠</span>。";
             } else if (lowerCaseMessage.includes('金融條件調整') || lowerCaseMessage.includes('風險') || lowerCaseMessage.includes('未達標') || lowerCaseMessage.includes('水')) {
-                 // 模擬查詢金融決策結果 - 未達標/條件調升情境 (修正為中性措辭)
-                botResponse = "<p style='color: var(--warning-red); font-weight: bold;'>⚠️ 風險警示通知 ⚠️</p>系統偵測到「水資源利用效率」SPT 未達標（年度目標減少 5%，實際僅減少 1.2%）。依據合約條款，銀行將於下個季度自動觸發 <span class='font-bold'>15 bps 的利率條件調升</span>。建議您立即聯繫永續顧問調整策略。";
+                 // 【修復 4: 修正風險警示的內聯樣式，使用 CSS 變數】
+                botResponse = `<p class='text-warning-red font-bold'>⚠️ 風險警示通知 ⚠️</p>系統偵測到「水資源利用效率」SPT 未達標（年度目標減少 5%，實際僅減少 1.2%）。依據合約條款，銀行將於下個季度自動觸發 <span class='font-bold'>15 bps 的利率條件調升</span>。建議您立即聯繫永續顧問調整策略。`;
             } else if (lowerCaseMessage.includes('永續家') || lowerCaseMessage.includes('顧問')) {
                 // 模擬查詢顧問相關服務
                 botResponse = "Ecoshane 永續家為您提供 SROI 方法論建立、公正轉型策略設計及第三方確信輔導。我們的專業顧問服務能確保您的 SPT 策略嚴謹有效。";
             } else {
-                // 預設歡迎或引導詞 (修正為中性用語)
+                // 預設歡迎或引導詞
                 botResponse = "我是 Ecoshane Bank 的智慧客服。您可以輸入：SLL 履約進度、SROI 社會價值、利率調整結果，或輸入 <span class='font-bold'>金融條件調整</span> 查看履約風險。";
             }
 
@@ -467,7 +488,7 @@
                 messageDiv.innerHTML = `<div class="text-white rounded-lg p-3 max-w-[80%] shadow-md" style="background-color: var(--secondary-green);">${text}</div>`;
             } else if (sender === 'bot') {
                 messageDiv.classList.add('justify-start');
-                // 使用 innerHTML 渲染帶有樣式的風險警示
+                // 使用 innerHTML 渲染帶有樣式的回應，包括風險警示
                 messageDiv.innerHTML = `<div class="bg-gray-200 text-gray-800 rounded-lg p-3 max-w-[80%]">${text}</div>`;
             } else if (sender === 'bot-typing') {
                 messageDiv.classList.add('justify-start');
