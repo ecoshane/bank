@@ -61,7 +61,8 @@
     <!-- 導航欄 - 保持固定並增加 Z-index -->
     <nav class="bg-white shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
+            <!-- 修正這裡：將 href="index.html" 改為 href="#hero" 以指向頁面頂部 -->
+            <a href="#hero" class="flex items-center space-x-3">
                 <!-- LOGO/品牌名稱 -->
                 <i class="fas fa-leaf text-3xl transition duration-300 transform hover:scale-110" style="color: var(--secondary-green);"></i>
                 <span class="text-3xl font-extrabold text-gray-800">Ecoshane Bank</span>
@@ -79,7 +80,7 @@
         </div>
     </nav>
 
-    <!-- 英雄區塊 - 置中標題，字體恢復 -->
+    <!-- 英雄區塊 - 加入 id="hero" 作為頁面頂部錨點 -->
     <header id="hero" class="hero-banner text-white text-center pt-32 pb-24 md:pt-40 md:pb-32 mt-[68px]">
         <div class="max-w-5xl mx-auto px-4">
             <p class="text-lg md:text-xl font-medium mb-3 tracking-wider opacity-90">Ecoshane Bank 永續連結貸款 SLL 成功案例</p>
