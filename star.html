@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 驅動的人權風險確信專案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lato:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f4f8; /* Lighter grey background */
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px 0;
+    place-items: center;
+    font-family: 'Noto Sans TC', 'Lato', sans-serif; /* Prioritize Noto Sans TC */
+}
+
+.slide-container {
+    align-items: center;
+    background-color: #0d1a2a; /* Deep Navy Blue */
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    height: 720px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px;
+    position: relative;
+    width: 1280px;
+}
+
+/* 1.1 BACKGROUND STYLING */
+.slide-container::before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+    opacity: 0.08;
+    /* Subtle geometric pattern - ACCENT COLOR */
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fcd34d' fill-opacity='0.25' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.slide-container>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* 2. CONSISTENT TYPOGRAPHY */
+
+/* Headings Font */
+.slide-container h1,
+.slide-container h2,
+.slide-container h3,
+.slide-container .star-label {
+    color: #f8fafc; /* Light Gray / White */
+    font-weight: 700;
+    font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+    margin: 0;
+}
+
+/* Body Text Font */
+.slide-container p,
+.slide-container li {
+    color: #cbd5e1; /* Lighter text color */
+    font-family: 'Noto Sans TC', 'Lato', sans-serif;
+    font-size: 22px; /* Base Text Size */
+    line-height: 1.8;
+}
+
+/* Consistent Font Sizes */
+.slide-container h1 {
+    font-size: 64px;
+}
+
+.slide-container .slide-title {
+    /* This is an h2 for main slide title */
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: left;
+    width: 100%;
+    color: #f8fafc;
+}
+
+.slide-container h3 {
+    font-size: 32px; /* Increased Section Subtitle */
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fcd34d; /* ACCENT COLOR: Warm Gold (For main section titles) */
+}
+
+.slide-container .subtitle {
+    font-weight: 400;
+    margin: 20px auto;
+    color: #e2e8f0;
+    font-size: 26px;
+    line-height: 1.7;
+}
+
+/* STAR Layout Styling */
+.star-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 50px;
+}
+
+.star-label {
+    font-size: 140px;
+    font-weight: 900;
+    color: #fcd34d; /* ACCENT COLOR: Warm Gold */
+    opacity: 0.2;
+    margin-right: -20px;
+}
+
+.star-content {
+    flex-grow: 1;
+}
+
+.star-content h3 {
+    color: #fcd34d; /* ACCENT COLOR: Warm Gold */
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.star-content p {
+    font-size: 24px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.star-content ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.star-content li {
+    margin-bottom: 15px;
+    padding-left: 35px;
+    position: relative;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+/* 1. CHANGE: List markers are now neutral gray */
+.star-content li::before {
+    content: '\f0da'; /* Font Awesome Arrow Right */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: #e2e8f0; /* NEUTRAL COLOR: Light Gray */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 20px;
+}
+
+.star-content li strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Action Slide Specifics (3 columns) */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.action-tile {
+    background-color: #1e293b;
+    border-radius: 12px;
+    padding: 30px;
+    /* Border color uses ACCENT or SEMANTIC colors */
+    border-left: 5px solid #fcd34d; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* 2. CHANGE: Action titles use a softer white/gray, simplifying the color palette */
+.action-tile h4 {
+    color: #e2e8f0; 
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.action-tile i {
+    color: #cbd5e1;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.action-tile p, .action-tile li {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+/* Result Slide specifics (Metrics and Cases) */
+.result-metrics {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.metric-card {
+    flex: 1;
+    background-color: #1e293b;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid #334155;
+}
+
+.metric-card .value {
+    font-size: 60px;
+    font-weight: 700;
+    color: #fcd34d; /* ACCENT COLOR: Warm Gold */
+    margin-bottom: 5px;
+}
+
+.metric-card .label {
+    font-size: 22px;
+    color: #e2e8f0;
+}
+
+.result-case-studies {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.case-study-card {
+    background-color: #1e293b;
+    border-radius: 12px;
+    padding: 30px;
+    border-left: 5px solid;
+}
+
+.case-study-card.success {
+    border-color: #34d399; /* Green for success (SEMANTIC) */
+}
+.case-study-card.failure {
+    border-color: #f87171; /* Red for risk (SEMANTIC) */
+}
+
+.case-study-card h4 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.case-study-card.success h4 { color: #34d399; }
+.case-study-card.failure h4 { color: #f87171; }
+
+.case-study-card li {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+    color: #cbd5e1;
+}
+
+/* 3. CHANGE: Case study list markers are now neutral gray */
+.case-study-card li::before {
+    content: '•';
+    color: #e2e8f0; /* NEUTRAL COLOR: Light Gray */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 20px;
+}
+
+.case-study-card .financial-result {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #334155;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* Title Slide & Q&A */
+.title-layout {
+    text-align: center;
+    width: 100%;
+}
+.title-layout h1 {
+    color: #ffffff;
+    font-size: 72px;
+}
+.title-layout .subtitle {
+    color: #e2e8f0;
+    max-width: 900px;
+    font-size: 30px;
+}
+
+.qa-layout {
+    text-align: center;
+    width: 100%;
+    align-self: center;
+}
+
+.qa-layout h2 {
+    font-size: 80px;
+    margin-bottom: 20px;
+    color: #f8fafc;
+}
+
+.qa-layout p {
+    font-size: 30px;
+    color: #e2e8f0;
+}
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title Slide -->
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <h1>AI 驅動的人權風險確信專案</h1>
+        <p class="subtitle">專案貢獻與成果報告 (STAR 原則)</p>
+    </div>
+</div>
+
+<!-- Slide 2: S - Situation -->
+<div class="slide-container" id="slide2">
+    <div class="star-layout">
+        <div class="star-label">S</div>
+        <div class="star-content">
+            <h3>情境 (Situation)：社會風險數據的「滯後」與「不可信」</h3>
+            <p>傳統永續金融在「社會風險」（人權、勞工糾紛）的監控上幾乎失靈，我們面臨三大挑戰：</p>
+            <ul>
+                <li><strong>資訊滯後：</strong> 僅依賴年度報告，當風險事件（如強迫勞動）發生時，資訊反應滯後數月。</li>
+                <li><strong>數據不可信：</strong> 外部輿情充滿難辨識的「假消息」和「惡意抹黑」，導致風險評估失準。</li>
+                <li><strong>法規壓力：</strong> 國際新興法規（如歐盟 CSDDD）要求金融機構必須對投融資對象執行人權盡職調查。</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: T - Task -->
+<div class="slide-container" id="slide3">
+    <div class="star-layout">
+        <div class="star-label">T</div>
+        <div class="star-content">
+            <h3>任務 (Task)：建立「即時」且「可確信」的風險防禦網</h3>
+            <p>我的核心任務是設計並實施一套「AI 驅動的永續風險確信機制」，以達成明確的量化目標：</p>
+            <ul>
+                <li><strong>量化目標：</strong> 將重大風險訊號的「偵測與確信時間」從傳統的數週<strong>縮短至 48 小時內</strong>。</li>
+                <li><strong>合規目標：</strong> 確保人權數據處理與評分機制，符合最嚴苛的國際法規盡職調查要求。</li>
+                <li><strong>金融目標：</strong> 將驗證後的風險分數，與永續連結貸款（SLL）的金融條件（利率）直接掛鉤。</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: A - Action 1/3: Architecture -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">A (Action) 1/3：部署雲端數據架構 (Google Cloud)</h2>
+    <div class="content-area">
+        <div class="action-grid">
+            <div class="action-tile">
+                <i class="fa-solid fa-server"></i>
+                <h4>數據接入 (Apigee)</h4>
+                <p>建立 Open API 閘道，用於安全、標準化地介接客戶內部的「環境績效」與「內部勞工申訴日誌」。</p>
+            </div>
+            <div class="action-tile">
+                <i class="fa-solid fa-brain"></i>
+                <h4>AI 運算 (Vertex AI)</h4>
+                <p>部署自然語言處理（NLP）模型，用於 24/7 自動掃描與分析全球新聞、NGO 報告及網路論壇。</p>
+            </div>
+            <div class="action-tile">
+                <i class="fa-solid fa-database"></i>
+                <h4>數據倉儲 (BigQuery)</h4>
+                <p>作為單一事實來源，彙整所有結構化（內部）與非結構化（外部）數據，供儀表板即時調用。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: A - Action 2/3: Confidence & Compliance -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">A (Action) 2/3：風險訊號確信機制與法規遵循</h2>
+    <div class="content-area">
+        <div class="action-grid" style="grid-template-columns: 2fr 1fr;">
+            <div class="action-tile" style="border-left-color: #fcd34d;">
+                <i class="fa-solid fa-sitemap"></i>
+                <h4>AI 風險訊號確信機制 (防堵假消息)</h4>
+                <ol style="list-style: none; padding: 0;">
+                    <li style="font-size: 18px; margin-bottom: 10px; padding-left: 0;">1. AI 自動監測與抓取潛在風險訊號。</li>
+                    <li style="font-size: 18px; margin-bottom: 10px; padding-left: 0;">2. AI 可信度評估：依來源權威性自動標註「高/低可信度」。</li>
+                    <li style="font-size: 18px; margin-bottom: 0px; padding-left: 0;">3. <strong>人工確認環節 (Human-in-the-Loop)：</strong>強制分析師手動確認/判定假訊息，確保 100% 嚴謹確信。</li>
+                </ol>
+            </div>
+            <div class="action-tile" style="border-left-color: #34d399;">
+                <i class="fa-solid fa-user-lock"></i>
+                <h4>落實法規遵循 (數據敏感性處理)</h4>
+                <p>針對「內部勞工申訴日誌」等高度敏感人權資訊，在 API 傳輸過程中<strong>執行「去識別化」與「高強度加密」協議</strong>，嚴格符合個資保護法規與金融監管要求。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: A - Action 3/3: Stress Test -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">A (Action) 3/3：執行流程壓力測試 (真實案例導入)</h2>
+    <div class="content-area">
+        <div class="action-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="action-tile" style="border-left-color: #f87171;">
+                <i class="fa-solid fa-house-damage"></i>
+                <h4>情境模擬與機制驗證</h4>
+                <p>引用「新光三越氣爆案」等真實社會事件作為壓力測試案例，證明模型有效性：風險事件發生後，客戶的「管理流程與補救措施」才是評分關鍵。</p>
+            </div>
+            <div class="action-tile" style="border-left-color: #f8fafc;">
+                <h4 style="color: #f8fafc;">評分關鍵：積極應對 vs. 消極隱匿</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="font-size: 18px; color: #34d399;"><i class="fa-solid fa-thumbs-up" style="margin-right: 10px;"></i><strong>情境 A (積極):</strong> 啟動補救、透明公開 → <strong>利率維持不變。</strong></li>
+                    <li style="font-size: 18px; color: #f87171;"><i class="fa-solid fa-thumbs-down" style="margin-right: 10px;"></i><strong>情境 B (消極):</strong> 試圖隱匿、推卸責任 → <strong>觸發貸款利率加碼。</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: R - Result -->
+<div class="slide-container" id="slide7">
+    <div class="star-layout" style="flex-direction: column; align-items: start;">
+        <div class="star-label" style="font-size: 100px; opacity: 1; margin: 0 0 20px 0;">R</div>
+        <div class="star-content" style="width: 100%;">
+            <h3>結果 (Result)：風控成效量化與金融成果</h3>
+
+            <div class="result-metrics">
+                <div class="metric-card">
+                    <div class="value">48小時</div>
+                    <div class="label">風險確信週期 (效率提升 ~80%)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">33.8%</div>
+                    <div class="label">人權風險分數降低幅度 (68分 → 45分)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">1:3.4</div>
+                    <div class="label">社會價值量化 SROI (成功獎勵案例)</div>
+                </div>
+            </div>
+
+            <div class="result-case-studies">
+                <div class="case-study-card failure">
+                    <h4><i class="fa-solid fa-triangle-exclamation"></i> 成功防禦案例 (風險觸發)</h4>
+                    <ul>
+                        <li><strong>監控發現:</strong> 驗證電子業客戶「供應商嚴重超時工作」紅燈事件。</li>
+                        <li><strong>風險分數:</strong> 飆升至 82 分（高風險）。</li>
+                    </ul>
+                    <p class="financial-result">金融結果：系統自動轉為「待處置（紅燈）」，啟動利率加碼機制，保護資產。</p>
+                </div>
+                <div class="case-study-card success">
+                    <h4><i class="fa-solid fa-circle-check"></i> 成功獎勵案例 (價值創造)</h4>
+                    <ul>
+                        <li><strong>驗證通過:</strong> 「盈盈水泥」（模擬）人權風險分數僅 25 分（低風險）。</li>
+                        <li><strong>社會價值:</strong> 社會投資報酬率 (SROI) 驗證達 1:3.4。</li>
+                    </ul>
+                    <p class="financial-result">金融結果：系統判定「正常履約（綠燈）」，觸發最高 25 基點利率減免。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Q&A -->
+<div class="slide-container" id="slide8">
+    <div class="qa-layout">
+        <h2>感謝聆聽</h2>
+        <p>Q & A</p>
+    </div>
+</div>
+
+</body>
+</html>
