@@ -10,12 +10,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
 /* 1. THE SETUP */
+/* --- COLOR VARIABLES (Updated to softer Cyan accent and neutral gray text) --- */
+:root {
+    --color-primary-dark: #0d1a2a; /* Deep Navy Blue */
+    --color-secondary-dark: #1e293b; /* Darker Slate */
+    --color-accent-soft: #80e2e2; /* NEW: Soft Cyan Accent (Replaces harsh yellow) */
+    --color-text-light: #F0F0F0; /* NEW: Soft White (For headings and strong emphasis) */
+    --color-text-medium: #A0A0A0; /* NEW: Neutral Medium Gray (For body text) */
+    --color-success: #34d399; /* Green for success */
+    --color-risk: #f87171; /* Red for risk */
+    --color-border: #334155;
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: #f0f4f8; /* Lighter grey background */
+    background-color: #f0f4f8; 
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr;
@@ -23,18 +35,18 @@ body {
     min-height: 100vh;
     padding: 20px 0;
     place-items: center;
-    font-family: 'Noto Sans TC', 'Lato', sans-serif; /* Prioritize Noto Sans TC */
+    font-family: 'Noto Sans TC', 'Lato', sans-serif; 
 }
 
 .slide-container {
     align-items: center;
-    background-color: #0d1a2a; /* Deep Navy Blue */
+    background-color: var(--color-primary-dark); 
     border-radius: 8px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     height: 720px;
-    justify-content: center;
+    justify-content: center; /* Default: centers content vertically */
     overflow: hidden;
     padding: 60px;
     position: relative;
@@ -51,8 +63,8 @@ body {
     width: 100%;
     z-index: 0;
     opacity: 0.08;
-    /* Subtle geometric pattern - ACCENT COLOR */
-    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fcd34d' fill-opacity='0.25' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+    /* Subtle geometric pattern - UPDATED ACCENT COLOR */
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2380e2e2' fill-opacity='0.25' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .slide-container>* {
@@ -67,7 +79,7 @@ body {
 .slide-container h2,
 .slide-container h3,
 .slide-container .star-label {
-    color: #f8fafc; /* Light Gray / White */
+    color: var(--color-text-light); 
     font-weight: 700;
     font-family: 'Poppins', 'Noto Sans TC', sans-serif;
     margin: 0;
@@ -76,9 +88,9 @@ body {
 /* Body Text Font */
 .slide-container p,
 .slide-container li {
-    color: #cbd5e1; /* Lighter text color */
+    color: var(--color-text-medium); /* Now gray */
     font-family: 'Noto Sans TC', 'Lato', sans-serif;
-    font-size: 22px; /* Base Text Size */
+    font-size: 22px; 
     line-height: 1.8;
 }
 
@@ -88,31 +100,30 @@ body {
 }
 
 .slide-container .slide-title {
-    /* This is an h2 for main slide title */
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 40px;
     text-align: left;
     width: 100%;
-    color: #f8fafc;
+    color: var(--color-text-light);
 }
 
 .slide-container h3 {
-    font-size: 32px; /* Increased Section Subtitle */
+    font-size: 32px; 
     font-weight: 600;
     margin-bottom: 20px;
-    color: #fcd34d; /* ACCENT COLOR: Warm Gold (For main section titles) */
+    color: var(--color-accent-soft); /* Now soft cyan */
 }
 
 .slide-container .subtitle {
     font-weight: 400;
     margin: 20px auto;
-    color: #e2e8f0;
+    color: var(--color-text-medium); /* Now gray */
     font-size: 26px;
     line-height: 1.7;
 }
 
-/* STAR Layout Styling */
+/* STAR Layout Styling - Default (Row for S, T slides) */
 .star-layout {
     display: flex;
     flex-direction: row;
@@ -125,7 +136,7 @@ body {
 .star-label {
     font-size: 140px;
     font-weight: 900;
-    color: #fcd34d; /* ACCENT COLOR: Warm Gold */
+    color: var(--color-accent-soft); /* Now soft cyan */
     opacity: 0.2;
     margin-right: -20px;
 }
@@ -135,7 +146,7 @@ body {
 }
 
 .star-content h3 {
-    color: #fcd34d; /* ACCENT COLOR: Warm Gold */
+    color: var(--color-accent-soft); /* Now soft cyan */
     font-size: 48px;
     margin-bottom: 10px;
 }
@@ -160,12 +171,11 @@ body {
     line-height: 1.6;
 }
 
-/* 1. CHANGE: List markers are now neutral gray */
 .star-content li::before {
-    content: '\f0da'; /* Font Awesome Arrow Right */
+    content: '\f0da'; 
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
-    color: #e2e8f0; /* NEUTRAL COLOR: Light Gray */
+    color: var(--color-text-medium); /* Now gray */
     position: absolute;
     left: 0;
     top: 0;
@@ -173,9 +183,44 @@ body {
 }
 
 .star-content li strong {
-    color: #ffffff;
+    color: var(--color-text-light); /* Highlight text remains light/white */
     font-weight: 700;
 }
+
+/* *** SLIDE 7 & 8 SPECIFIC LAYOUT ADJUSTMENT (Result Slides) *** */
+#slide7, #slide8 {
+    /* CRITICAL FIX 1: Override default vertical centering to align content to the TOP */
+    justify-content: flex-start; 
+}
+#slide7 .star-layout, #slide8 .star-layout {
+    flex-direction: column; /* Stack vertically for R slide */
+    align-items: flex-start; /* Align content to the left */
+    justify-content: flex-start; /* CRITICAL FIX 2: Ensure internal layout starts from the top */
+    height: 100%; /* Ensure it fills the slide-container height */
+}
+
+#slide7 .star-label, #slide8 .star-label {
+    /* CRITICAL FIX 3: Smaller, tighter label to integrate better with the title and save vertical space */
+    font-size: 60px; /* Reduced from 100px */
+    opacity: 1; 
+    margin: 0 0 10px 0; /* Reduced margin-bottom from 20px to 10px */
+    align-self: flex-start;
+    line-height: 1; /* Ensure no extra line height pushes content down */
+}
+
+#slide7 .star-content h3, #slide8 .star-content h3 {
+    margin-top: 0; /* Ensure H3 is tight against the R label */
+    margin-bottom: 30px; /* Slightly more space before metrics start */
+}
+
+#slide7 .star-content, #slide8 .star-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ********************************************************* */
+
 
 /* Action Slide Specifics (3 columns) */
 .action-grid {
@@ -187,25 +232,23 @@ body {
 }
 
 .action-tile {
-    background-color: #1e293b;
+    background-color: var(--color-secondary-dark);
     border-radius: 12px;
     padding: 30px;
-    /* Border color uses ACCENT or SEMANTIC colors */
-    border-left: 5px solid #fcd34d; 
+    border-left: 5px solid var(--color-accent-soft); /* Now soft cyan border */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
-/* 2. CHANGE: Action titles use a softer white/gray, simplifying the color palette */
 .action-tile h4 {
-    color: #e2e8f0; 
+    color: var(--color-text-medium); /* Now gray */
     font-size: 26px;
     font-weight: 600;
     margin-bottom: 10px;
 }
 .action-tile i {
-    color: #cbd5e1;
+    color: var(--color-text-medium); /* Now gray */
     font-size: 30px;
     margin-bottom: 15px;
 }
@@ -213,7 +256,7 @@ body {
 .action-tile p, .action-tile li {
     font-size: 18px;
     line-height: 1.6;
-    color: #cbd5e1;
+    color: var(--color-text-medium); /* Now gray */
 }
 
 /* Result Slide specifics (Metrics and Cases) */
@@ -221,47 +264,52 @@ body {
     display: flex;
     gap: 30px;
     margin-bottom: 40px;
+    width: 100%; /* Ensure it uses full width */
 }
 
 .metric-card {
     flex: 1;
-    background-color: #1e293b;
+    background-color: var(--color-secondary-dark);
     border-radius: 12px;
     padding: 30px;
     text-align: center;
-    border: 1px solid #334155;
+    border: 1px solid var(--color-border);
 }
 
 .metric-card .value {
     font-size: 60px;
     font-weight: 700;
-    color: #fcd34d; /* ACCENT COLOR: Warm Gold */
+    color: var(--color-accent-soft); /* Now soft cyan */
     margin-bottom: 5px;
 }
 
 .metric-card .label {
     font-size: 22px;
-    color: #e2e8f0;
+    color: var(--color-text-light); /* Light/White */
 }
 
 .result-case-studies {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
+    width: 100%; /* Ensure it uses full width */
 }
 
 .case-study-card {
-    background-color: #1e293b;
+    background-color: var(--color-secondary-dark);
     border-radius: 12px;
     padding: 30px;
     border-left: 5px solid;
+    /* Ensure content inside card is managed cleanly */
+    display: flex;
+    flex-direction: column;
 }
 
 .case-study-card.success {
-    border-color: #34d399; /* Green for success (SEMANTIC) */
+    border-color: var(--color-success); /* Green for success (SEMANTIC) */
 }
 .case-study-card.failure {
-    border-color: #f87171; /* Red for risk (SEMANTIC) */
+    border-color: var(--color-risk); /* Red for risk (SEMANTIC) */
 }
 
 .case-study-card h4 {
@@ -270,8 +318,8 @@ body {
     margin-bottom: 10px;
 }
 
-.case-study-card.success h4 { color: #34d399; }
-.case-study-card.failure h4 { color: #f87171; }
+.case-study-card.success h4 { color: var(--color-success); }
+.case-study-card.failure h4 { color: var(--color-risk); }
 
 .case-study-card li {
     font-size: 18px;
@@ -279,13 +327,12 @@ body {
     margin-bottom: 8px;
     padding-left: 20px;
     position: relative;
-    color: #cbd5e1;
+    color: var(--color-text-medium); /* Now gray */
 }
 
-/* 3. CHANGE: Case study list markers are now neutral gray */
 .case-study-card li::before {
     content: '•';
-    color: #e2e8f0; /* NEUTRAL COLOR: Light Gray */
+    color: var(--color-text-medium); /* Now gray */
     position: absolute;
     left: 0;
     top: 0;
@@ -295,10 +342,12 @@ body {
 .case-study-card .financial-result {
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid #334155;
+    border-top: 1px solid var(--color-border);
     font-size: 20px;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--color-text-light); /* Light/White */
+    /* Ensure this section is pushed to the bottom if possible, although not critical for this layout */
+    margin-top: auto; 
 }
 
 /* Title Slide & Q&A */
@@ -307,11 +356,11 @@ body {
     width: 100%;
 }
 .title-layout h1 {
-    color: #ffffff;
+    color: var(--color-text-light);
     font-size: 72px;
 }
 .title-layout .subtitle {
-    color: #e2e8f0;
+    color: var(--color-text-medium); /* Now gray */
     max-width: 900px;
     font-size: 30px;
 }
@@ -325,12 +374,12 @@ body {
 .qa-layout h2 {
     font-size: 80px;
     margin-bottom: 20px;
-    color: #f8fafc;
+    color: var(--color-text-light);
 }
 
 .qa-layout p {
+    color: var(--color-text-medium); /* Now gray */
     font-size: 30px;
-    color: #e2e8f0;
 }
     </style>
 </head>
@@ -353,8 +402,8 @@ body {
             <p>傳統永續金融在「社會風險」（人權、勞工糾紛）的監控上幾乎失靈，我們面臨三大挑戰：</p>
             <ul>
                 <li><strong>資訊滯後：</strong> 僅依賴年度報告，當風險事件（如強迫勞動）發生時，資訊反應滯後數月。</li>
-                <li><strong>數據不可信：</strong> 外部輿情充滿難辨識的「假消息」和「惡意抹黑」，導致風險評估失準。</li>
-                <li><strong>法規壓力：</strong> 國際新興法規（如歐盟 CSDDD）要求金融機構必須對投融資對象執行人權盡職調查。</li>
+                <li><strong>數據不可信：：</strong> 外部輿情充滿難辨識的「假消息」和「惡意抹黑」，導致風險評估失準。</li>
+                <li><strong>法規壓力：：</strong> 國際新興法規（如歐盟 CSDDD）要求金融機構必須對投融資對象執行人權盡職調查。</li>
             </ul>
         </div>
     </div>
@@ -368,9 +417,9 @@ body {
             <h3>任務 (Task)：建立「即時」且「可確信」的風險防禦網</h3>
             <p>我的核心任務是設計並實施一套「AI 驅動的永續風險確信機制」，以達成明確的量化目標：</p>
             <ul>
-                <li><strong>量化目標：</strong> 將重大風險訊號的「偵測與確信時間」從傳統的數週<strong>縮短至 48 小時內</strong>。</li>
-                <li><strong>合規目標：</strong> 確保人權數據處理與評分機制，符合最嚴苛的國際法規盡職調查要求。</li>
-                <li><strong>金融目標：</strong> 將驗證後的風險分數，與永續連結貸款（SLL）的金融條件（利率）直接掛鉤。</li>
+                <li><strong>量化目標：：</strong> 將重大風險訊號的「偵測與確信時間」從傳統的數週<strong>縮短至 48 小時內</strong>。</li>
+                <li><strong>合規目標：：</strong> 確保人權數據處理與評分機制，符合最嚴苛的國際法規盡職調查要求。</li>
+                <li><strong>金融目標：：</strong> 將驗證後的風險分數，與永續連結貸款（SLL）的金融條件（利率）直接掛鉤。</li>
             </ul>
         </div>
     </div>
@@ -405,7 +454,7 @@ body {
     <h2 class="slide-title">A (Action) 2/3：風險訊號確信機制與法規遵循</h2>
     <div class="content-area">
         <div class="action-grid" style="grid-template-columns: 2fr 1fr;">
-            <div class="action-tile" style="border-left-color: #fcd34d;">
+            <div class="action-tile" style="border-left-color: var(--color-accent-soft);">
                 <i class="fa-solid fa-sitemap"></i>
                 <h4>AI 風險訊號確信機制 (防堵假消息)</h4>
                 <ol style="list-style: none; padding: 0;">
@@ -414,7 +463,7 @@ body {
                     <li style="font-size: 18px; margin-bottom: 0px; padding-left: 0;">3. <strong>人工確認環節 (Human-in-the-Loop)：</strong>強制分析師手動確認/判定假訊息，確保 100% 嚴謹確信。</li>
                 </ol>
             </div>
-            <div class="action-tile" style="border-left-color: #34d399;">
+            <div class="action-tile" style="border-left-color: var(--color-success);">
                 <i class="fa-solid fa-user-lock"></i>
                 <h4>落實法規遵循 (數據敏感性處理)</h4>
                 <p>針對「內部勞工申訴日誌」等高度敏感人權資訊，在 API 傳輸過程中<strong>執行「去識別化」與「高強度加密」協議</strong>，嚴格符合個資保護法規與金融監管要求。</p>
@@ -428,28 +477,28 @@ body {
     <h2 class="slide-title">A (Action) 3/3：執行流程壓力測試 (真實案例導入)</h2>
     <div class="content-area">
         <div class="action-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="action-tile" style="border-left-color: #f87171;">
+            <div class="action-tile" style="border-left-color: var(--color-risk);">
                 <i class="fa-solid fa-house-damage"></i>
                 <h4>情境模擬與機制驗證</h4>
                 <p>引用「新光三越氣爆案」等真實社會事件作為壓力測試案例，證明模型有效性：風險事件發生後，客戶的「管理流程與補救措施」才是評分關鍵。</p>
             </div>
-            <div class="action-tile" style="border-left-color: #f8fafc;">
-                <h4 style="color: #f8fafc;">評分關鍵：積極應對 vs. 消極隱匿</h4>
+            <div class="action-tile" style="border-left-color: var(--color-text-light);">
+                <h4 style="color: var(--color-text-light);">評分關鍵：積極應對 vs. 消極隱匿</h4>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="font-size: 18px; color: #34d399;"><i class="fa-solid fa-thumbs-up" style="margin-right: 10px;"></i><strong>情境 A (積極):</strong> 啟動補救、透明公開 → <strong>利率維持不變。</strong></li>
-                    <li style="font-size: 18px; color: #f87171;"><i class="fa-solid fa-thumbs-down" style="margin-right: 10px;"></i><strong>情境 B (消極):</strong> 試圖隱匿、推卸責任 → <strong>觸發貸款利率加碼。</strong></li>
+                    <li style="font-size: 18px; color: var(--color-success);"><i class="fa-solid fa-thumbs-up" style="margin-right: 10px;"></i><strong>情境 A (積極):</strong> 啟動補救、透明公開 → <strong>利率維持不變。</strong></li>
+                    <li style="font-size: 18px; color: var(--color-risk);"><i class="fa-solid fa-thumbs-down" style="margin-right: 10px;"></i><strong>情境 B (消極):</strong> 試圖隱匿、推卸責任 → <strong>觸發貸款利率加碼。</strong></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Slide 7: R - Result -->
+<!-- Slide 7: R 1/2 - Result (Metrics) -->
 <div class="slide-container" id="slide7">
-    <div class="star-layout" style="flex-direction: column; align-items: start;">
-        <div class="star-label" style="font-size: 100px; opacity: 1; margin: 0 0 20px 0;">R</div>
-        <div class="star-content" style="width: 100%;">
-            <h3>結果 (Result)：風控成效量化與金融成果</h3>
+    <div class="star-layout">
+        <div class="star-label">R</div>
+        <div class="star-content">
+            <h3>結果 (Result) 1/2：風控成效量化指標</h3>
 
             <div class="result-metrics">
                 <div class="metric-card">
@@ -465,6 +514,20 @@ body {
                     <div class="label">社會價值量化 SROI (成功獎勵案例)</div>
                 </div>
             </div>
+            
+            <p style="font-size: 26px; color: var(--color-text-light); margin-top: 20px;">
+                透過 AI 驅動機制，我們成功將重大風險的確認時間縮短至 48 小時內，顯著提升了風控反應速度與資產防禦能力。
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: R 2/2 - Result (Case Studies) -->
+<div class="slide-container" id="slide8">
+    <div class="star-layout">
+        <div class="star-label">R</div>
+        <div class="star-content">
+            <h3>結果 (Result) 2/2：案例研究與金融成果</h3>
 
             <div class="result-case-studies">
                 <div class="case-study-card failure">
@@ -488,8 +551,8 @@ body {
     </div>
 </div>
 
-<!-- Slide 8: Q&A -->
-<div class="slide-container" id="slide8">
+<!-- Slide 9: Q&A -->
+<div class="slide-container" id="slide9">
     <div class="qa-layout">
         <h2>感謝聆聽</h2>
         <p>Q & A</p>
