@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 驅動的永續風控與價值量化專案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lato:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f4f8; /* Lighter grey background */
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px 0;
+    place-items: center;
+    font-family: 'Noto Sans TC', 'Lato', sans-serif; /* Prioritize Noto Sans TC */
+}
+
+.slide-container {
+    align-items: center;
+    background-color: #0a192f; /* Deep Navy Blue */
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 720px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px;
+    position: relative;
+    width: 1280px;
+}
+
+/* 1.1 BACKGROUND STYLING */
+.slide-container::before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+    opacity: 0.05;
+    /* Subtle background pattern */
+    background-image: radial-gradient(#64ffda 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.slide-container>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* 2. CONSISTENT TYPOGRAPHY */
+
+/* Headings Font */
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+    color: #f8fafc; /* Light Gray / White */
+    font-weight: 700;
+    font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+    margin: 0;
+}
+
+/* Body Text Font */
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle,
+.slide-container .number-label,
+.slide-container .legend li,
+.slide-container .chart-summary,
+.slide-container .bar .label,
+.slide-container th,
+.slide-container td,
+.slide-container .alternating-text-tile p,
+.slide-container .bleed-text-side p {
+    color: #cbd5e1; /* Lighter text color */
+    font-family: 'Noto Sans TC', 'Lato', sans-serif;
+}
+
+/* Consistent Font Sizes */
+.slide-container h1 {
+    font-size: 64px; /* Slightly smaller for Chinese */
+}
+
+.slide-container .slide-title {
+    /* This is an h2 */
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: left;
+    width: 100%;
+    color: #f8fafc;
+}
+
+.slide-container h3 {
+    font-size: 30px; /* INCREASED */
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #64ffda; /* Accent color */
+}
+
+/* Unified body text size */
+.slide-container p,
+.slide-container li,
+.slide-container .legend li,
+.slide-container .chart-summary,
+.slide-container .bar .label,
+.slide-container th,
+.slide-container td,
+.slide-container .alternating-text-tile p {
+    font-size: 20px; /* INCREASED */
+    line-height: 1.7; /* Increased line height for CJK */
+}
+
+.slide-container .subtitle {
+    font-weight: 400;
+    margin: 20px auto;
+    color: #e2e8f0;
+    font-size: 24px; /* INCREASED */
+    line-height: 1.7;
+}
+
+.slide-container .content-area {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 3. LAYOUT DEFINITIONS */
+
+.title-layout {
+    text-align: center;
+    /* Adjusting to full screen center without image overlay */
+    width: 100%;
+}
+.title-layout h1 {
+    color: #ffffff;
+}
+.title-layout .subtitle {
+    color: #e2e8f0;
+    max-width: 800px;
+}
+
+.two-column {
+    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    width: 100%;
+}
+
+.two-column.tiled {
+    align-items: stretch;
+}
+
+.two-column.tiled>div {
+    background-color: #1e293b; /* Slate Blue */
+    border-radius: 12px;
+    border: 1px solid #334155;
+    padding: 40px;
+    text-align: left;
+}
+
+.two-column.tiled h3 {
+    color: #64ffda; /* Accent Green */
+    font-size: 26px; /* INCREASED */
+}
+
+.two-column.tiled p {
+    font-size: 18px; /* INCREASED */
+    line-height: 1.7;
+}
+
+.two-column ul {
+    list-style: none; /* Changed from disc */
+    margin: 0;
+    padding-left: 10px;
+}
+
+.two-column li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 20px; /* Ensure list items also increase */
+    line-height: 1.7;
+}
+
+/* Custom bullet */
+.two-column li::before {
+    content: '►';
+    color: #64ffda;
+    font-size: 16px; /* Keep bullet size reasonable */
+    position: absolute;
+    left: 0;
+    top: 8px; /* Adjust vertical alignment for larger text */
+}
+
+
+.image-wrapper {
+    border-radius: 12px;
+    height: 350px;
+    overflow: hidden;
+    width: 100%;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+}
+
+.image-wrapper img {
+    height: 100%;
+    object-fit: cover; /* Use cover for diagrams */
+    width: 100%;
+    opacity: 0.8;
+}
+
+.two-column .image-wrapper img {
+    object-fit: contain; /* Contain for diagrams */
+}
+/* New style for placeholder content in the image wrapper */
+.image-wrapper.placeholder-content {
+    background-color: #0d2138;
+    border: 2px solid #64ffda;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.tiled-content {
+    align-items: stretch;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    width: 100%;
+}
+
+.tile {
+    align-items: center;
+    background-color: #1e293b; /* Slate Blue */
+    border-radius: 12px;
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: flex-start;
+    padding: 30px;
+    text-align: center;
+}
+
+.tile .icon {
+    color: #64ffda; /* Accent Green */
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.tile p {
+    font-size: 18px; /* INCREASED */
+    line-height: 1.7;
+}
+
+
+.bullet-list {
+    max-width: 900px;
+    width: 100%;
+}
+
+.bullet-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bullet-list li {
+    gap: 15px;
+    margin-bottom: 25px; /* Increased spacing */
+    padding-left: 45px;
+    position: relative;
+    font-size: 20px; /* INCREASED */
+    line-height: 1.7;
+}
+
+.bullet-list i {
+    color: #64ffda; /* Accent Green */
+    font-size: 28px;
+    left: 0;
+    margin-top: 5px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 30px;
+}
+
+.bullet-list li strong {
+    color: #f8fafc; /* White */
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.full-bg-image {
+    background-position: center;
+    background-size: cover;
+    padding: 0; /* No padding for full bleed */
+}
+
+/* Add a scrim for text readability */
+.full-bg-image .content-overlay {
+    background: linear-gradient(90deg, rgba(10, 25, 47, 0.9) 0%, rgba(10, 25, 47, 0.7) 100%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    text-align: center;
+}
+
+.full-bg-image h1 {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+.full-bg-image .subtitle {
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+/* Section Title */
+.section-title-layout {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.section-title-layout h2 {
+    font-size: 80px;
+    margin-bottom: 20px;
+    color: #f8fafc;
+}
+
+.section-title-layout p {
+    font-size: 28px;
+    margin: 0 auto;
+    max-width: 700px;
+    color: #e2e8f0;
+}
+
+.section-title-layout hr {
+    background-color: #64ffda; /* Accent Green */
+    border: none;
+    height: 5px;
+    margin: 30px auto;
+    width: 100px;
+}
+
+/* `Bleed_Image_Right` layout */
+.slide-container.bleed-image-layout {
+    align-items: start;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: 1.5fr 1fr; /* Adjusted for text-heavy content */
+    padding: 0;
+}
+
+.slide-container.bleed-image-layout>.content-container {
+    padding: 60px 0 60px 60px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.slide-container.bleed-image-layout>.image-container {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    /* Added background for the placeholder block */
+    background-color: #1e293b; 
+    border-radius: 0 8px 8px 0;
+}
+
+.slide-container.bleed-image-layout img.bleed-image-side {
+    /* REMOVED IMG STYLES */
+}
+
+.slide-container.bleed-image-layout .bleed-text-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.slide-container.bleed-image-layout .bleed-text-side p {
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-size: 22px; /* INCREASED */
+}
+.slide-container.bleed-image-layout .bleed-text-side li {
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-size: 22px; /* INCREASED */
+    padding-left: 25px;
+    position: relative;
+}
+
+.slide-container.bleed-image-layout .bleed-text-side li::before {
+    content: '►';
+    color: #64ffda;
+    font-size: 18px; /* Keep bullet size reasonable */
+    position: absolute;
+    left: 0;
+    top: 8px; /* Adjust alignment */
+}
+
+
+/* Q&A Layout */
+.qa-layout {
+    text-align: center;
+    width: 100%;
+    align-self: center;
+}
+
+.qa-layout h2 {
+    font-size: 80px;
+    margin-bottom: 20px;
+    color: #f8fafc;
+}
+
+.qa-layout p {
+    font-size: 28px;
+    color: #e2e8f0;
+}
+
+/* Specific overrides for Tiled Text */
+.two-column.tiled.case-study>div {
+    text-align: left;
+}
+
+.two-column.tiled.case-study h3 {
+    font-size: 30px; /* INCREASED */
+    margin-bottom: 20px;
+}
+
+.two-column.tiled.case-study li {
+    font-size: 18px; /* INCREASED */
+    line-height: 1.7;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    color: #cbd5e1;
+}
+
+.two-column.tiled.case-study li strong {
+    color: #f8fafc;
+}
+
+.two-column.tiled.case-study li::before {
+    content: '•';
+    color: #64ffda;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 20px;
+}
+
+.two-column.tiled.case-study .green-light h3 {
+    color: #34d399; /* Green */
+}
+.two-column.tiled.case-study .green-light li::before {
+    color: #34d399;
+}
+
+.two-column.tiled.case-study .red-light h3 {
+    color: #f87171; /* Red */
+}
+.two-column.tiled.case-study .red-light li::before {
+    color: #f87171;
+}
+
+.two-column.tiled.case-study .financial-result {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #334155;
+    font-size: 20px; /* INCREASED */
+    font-weight: 700;
+    color: #ffffff;
+}
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title Slide (Image Removed) -->
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <h1>AI 驅動的永續風控與價值量化專案</h1>
+        <p class="subtitle">專案推動與管理報告 (PDCA 流程)</p>
+    </div>
+</div>
+
+<!-- Slide 2: Two_Column_Tiled_Text -->
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">專案概要與核心目標</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <h3><i class="fa-solid fa-shield-halved"></i> 風險防禦 (Risk Defense)</h3>
+                <p>本專案為金融機構的永續連結貸款，建立一套創新的績效追蹤體系。核心是解決傳統「社會面」數據（特別是人權相關）滯後、不可信、且難以量化的市場痛點。</p>
+            </div>
+            <div>
+                <h3><i class="fa-solid fa-hand-holding-dollar"></i> 價值創造 (Value Creation)</h3>
+                <p>我們將「人權風險」與「社會價值」轉化為可量化、可即時追蹤的金融決策指標，為金融產品打造兼具「風險防禦」與「價值創造」的雙核心引擎。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: Section_Title -->
+<div class="slide-container" id="slide3">
+    <div class="section-title-layout">
+        <hr>
+        <h2>P (Plan)</h2>
+        <p>規劃與策略制定</p>
+    </div>
+</div>
+
+<!-- Slide 4: Tiled_Text_With_Icons -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">(Plan) 策略定位與產品架構</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-search-dollar"></i></div>
+                <h3>市場缺口與法規前瞻</h3>
+                <p>從競爭激烈的「環境績效」轉向「社會風險」藍海。前瞻性應對歐盟 CSDDD 等盡職調查法規對金融機構的間接壓力。</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-award"></i></div>
+                <h3>正面獎勵 (SROI)</h3>
+                <p>採用「社會投資報酬率 SROI」框架，將企業投入（如員工培訓）轉化為貨幣化價值（如 1:3.4），作為利率減免的「獎勵指標」。</p>
+            </p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-ban"></i></div>
+                <h3>負面防禦 (Risk Pricing)</h3>
+                <p>將「人權盡職調查」實踐設計為動態評分系統，作為貸款的「風險否決條款」，使銀行能對人權風險進行定價，建立金融防護網。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Text Left, Architecture Placeholder Right (Image Replaced) -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">(Plan) 雲端數據治理藍圖</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <!-- Standard Bullets -->
+                <div>
+                    <ul>
+                        <li><strong>基礎架構:</strong> Google Cloud (GCP)</li>
+                        <li><strong>數據倉儲 (BigQuery):</strong> 儲存多源結構化（碳排）與非結構化（輿情）數據，作為儀表板的單一事實來源。</li>
+                        <li><strong>AI 平台 (Vertex AI):</strong> 部署和訓練 NLP 模型，高效執行 24/7 外部輿情分析。</li>
+                        <li><strong>API 閘道 (Apigee):</strong> 管理客戶端（如 EMS 系統）的數據 API 接入，確保安全與穩定。</li>
+                        <li><strong>成本效益:</strong> 彈性付費 (Pay-as-you-go) 模式，將初期固定成本降至最低。</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <!-- Custom Placeholder for Architecture Diagram -->
+                <div class="image-wrapper placeholder-content">
+                    <h3 style="color: #64ffda; margin-bottom: 20px; font-size: 26px;">數據治理流程示意</h3>
+                    <div style="color: #f8fafc; font-size: 18px; text-align: center; line-height: 1.5;">
+                        <p style="margin: 0;"><i class="fa-solid fa-cloud-arrow-up" style="color: #cbd5e1; margin-right: 8px;"></i> 客戶系統 (EMS / HR)</p>
+                        <p style="margin: 5px 0 10px 0;"><i class="fa-solid fa-arrow-down" style="color: #64ffda; font-size: 16px;"></i> via Apigee</p>
+                        <p style="margin: 0;"><i class="fa-solid fa-warehouse" style="color: #64ffda; margin-right: 8px;"></i> BigQuery (數據倉儲)</p>
+                        <p style="margin: 5px 0 10px 0;"><i class="fa-solid fa-arrow-down" style="color: #64ffda; font-size: 16px;"></i></p>
+                        <p style="margin: 0;"><i class="fa-solid fa-microchip" style="color: #cbd5e1; margin-right: 8px;"></i> Vertex AI (NLP / ML)</p>
+                        <p style="margin: 5px 0 10px 0;"><i class="fa-solid fa-arrow-down" style="color: #64ffda; font-size: 16px;"></i></p>
+                        <p style="margin: 0;"><i class="fa-solid fa-desktop" style="color: #f8fafc; margin-right: 8px;"></i> 風險儀表板 (Live Data)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Section_Title -->
+<div class="slide-container" id="slide6">
+    <div class="section-title-layout">
+        <hr>
+        <h2>D (Do)</h2>
+        <p>實踐與流程導入</p>
+    </div>
+</div>
+
+<!-- Slide 7: Styled_Bullet_Points-->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">(Do) 建立 AI 數據處理閉環</h2>
+    <div class="content-area">
+        <div class="bullet-list">
+            <ul>
+                <li><i class="fa-solid fa-cogs"></i><strong>數據自動接入:</strong> 成功自動化介接客戶 EMS（環境績效）與人資系統（內部勞工申訴日誌）的 Open API。</li>
+                <li><i class="fa-solid fa-lock"></i><strong>敏感數據處理:</strong> 針對申訴日誌等高度敏感資訊，在傳輸中執行「去識別化」與「高強度加密」，嚴格符合法規。</li>
+                <li><i class="fa-solid fa-robot"></i><strong>AI 風險訊號確信:</strong> 部署 NLP 模型 24/7 掃描全球新聞、NGO 報告，並依來源標註「高/低可信度」。</li>
+                <li><i class="fa-solid fa-user-check"></i><strong>人工確認環節 (Human-in-the-Loop):</strong> 為防堵假消息，所有 AI 標記的訊號，必須由分析師手動「確認為風險」或「判定為假訊息」，確保數據 100% 嚴謹確信。</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Section_Title -->
+<div class="slide-container" id="slide8">
+    <div class="section-title-layout">
+        <hr>
+        <h2>C (Check)</h2>
+        <p>監控與合規查核</p>
+    </div>
+</div>
+
+<!-- Slide 9: Text Left, Dashboard Placeholder Right (Image Replaced) -->
+<div class="slide-container bleed-image-layout" id="slide9">
+    <div class="content-container">
+        <h2 class="slide-title">(Check) 永續風險儀表板</h2>
+        <div class="content-area">
+            <!-- Text content area -->
+            <div class="bleed-text-side">
+                <ul>
+                    <li><strong>中央監控中心:</strong> 管理層可實時追蹤所有客戶的雙軌績效履約情況、風險分數趨勢。</li>
+                    <li><strong>即時數據流:</strong> 儀表板數據直接串聯雲端數據倉儲 (BigQuery)，確保所見的是即時 (Live Data) 數據，而非過期的靜態報告。</li>
+                    <li><strong>即時風險警報:</strong> 系統主動推送高風險事件（如「供應商超時工作」），實現真正的「即時風控」。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <!-- Custom Placeholder for Risk Dashboard -->
+        <div style="padding: 40px; text-align: center; color: #f8fafc; width: 80%;">
+            <div style="background-color: #0d2138; border: 1px solid #64ffda; border-radius: 10px; padding: 20px; margin-bottom: 20px;">
+                <p style="font-size: 20px; margin-bottom: 5px; color: #cbd5e1; line-height: 1.2;">整體風險分數</p>
+                <p style="font-size: 48px; font-weight: 700; color: #34d399; margin: 0;">68</p>
+                <p style="font-size: 16px; color: #cbd5e1; margin-top: 5px; line-height: 1.2;">(低風險區間)</p>
+            </div>
+
+            <div style="margin-bottom: 20px; text-align: left;">
+                <p style="font-size: 20px; font-weight: 700; color: #f8fafc; margin-bottom: 10px;"><i class="fa-solid fa-chart-line" style="color: #64ffda; margin-right: 10px;"></i> 績效趨勢</p>
+                <div style="display: flex; justify-content: space-between; font-size: 16px; color: #cbd5e1;">
+                    <span style="display: block; width: 30%;">SROI: <strong style="color: #34d399;">↑ 1:3.4</strong></span>
+                    <span style="display: block; width: 30%;">風險: <strong style="color: #34d399;">穩定</strong></span>
+                    <span style="display: block; width: 30%;">碳排: <strong style="color: #f87171;">-0.5%</strong></span>
+                </div>
+            </div>
+
+            <div style="padding: 15px; background-color: #f871711a; border: 1px solid #f87171; border-radius: 8px;">
+                <p style="font-size: 20px; font-weight: 700; color: #f87171; margin: 0;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> 即時風險警報 (客戶 E)
+                </p>
+                <p style="font-size: 16px; color: #cbd5e1; margin-top: 5px; margin-bottom: 0;">供應商嚴重超時工作 - 待處置 (紅燈)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: Two_Column_Tiled_Text (Case Studies) -->
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">(Check) 查核案例：成功與風險觸發</h2>
+    <div class="content-area">
+        <div class="two-column tiled case-study">
+            <div class="green-light">
+                <h3><i class="fa-solid fa-circle-check"></i> 成功案例：盈盈水泥 (綠燈)</h3>
+                <ul>
+                    <li><strong>環境績效:</strong> 碳排強度達成率 102.8% (超額達標)</li>
+                    <li><strong>社會價值:</strong> 社會投資報酬率 (SROI) 淨價值驗證達 1:3.4</li>
+                    <li><strong>人權風險:</strong> 風險分數 25 (低風險)，申訴機制有效運作</li>
+                </ul>
+                <p class="financial-result">金融結果：系統判定「正常履約」，觸發最高 25 基點 (0.25%) 利率減免。</p>
+            </div>
+            <div class="red-light">
+                <h3><i class="fa-solid fa-circle-xmark"></i> 風險觸發：客戶 E (紅燈)</h3>
+                <ul>
+                    <li><strong>監控發現:</strong> 儀表板「即時風險警報」抓取並驗證「供應商嚴重超時工作」事件。</li>
+                    <li><strong>人權風險:</strong> 風險分數飆升至 82 (高風險)</li>
+                    <li><strong>系統狀態:</strong> 自動將其狀態轉為「待處置 (紅燈)」</li>
+                </ul>
+                <p class="financial-result">金融結果：依約啟動利率加碼機制，有效保護金融機構的資產與聲譽。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Slide 11: Tiled_Text_With_Icons -->
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">A (Act) 優化與持續改善</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-archive"></i></div>
+                <h3>知識資本化</h3>
+                <p>將驗證成功的 SROI 模型 (1:3.4) 與風險定價機制進行標準化，回饋產品部門，作為下一代 SLL 產品的設計基礎，創造市場差異化。</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-brain"></i></div>
+                <h3>AI 模型精進</h3>
+                <p>根據儀表板的監控結果，持續反饋數據，優化 AI 模型的準確性，降低假消息誤判率，並提升對新興風險（如生物多樣性）的識別能力。</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-coins"></i></div>
+                <h3>雲端成本優化 (FinOps)</h3>
+                <p>持續導入 FinOps 原則，監控 AI 運算和數據儲存成本，確保此平台在未來服務規模擴大（從 10 家到 100 家客戶）時，仍維持最佳成本效益比。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Q&A -->
+<div class="slide-container" id="slide12">
+    <div class="qa-layout">
+        <h2>Questions?</h2>
+        <p>感謝聆聽</p>
+    </div>
+</div>
+
+</body>
+</html>
